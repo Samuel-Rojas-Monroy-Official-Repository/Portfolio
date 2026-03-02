@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samuel Rojas — Software Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --border: #1e1e2e;
+    --accent: #00ff88;
+    --accent2: #7c3aed;
+    --accent3: #06b6d4;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    overflow-x: hidden;
+  }
+
+  /* GRID BACKGROUND */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 2rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    z-index: 1;
+  }
+
+  .hero-content { max-width: 700px; }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 span {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+  }
+
+  .hero h1 .highlight {
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-text-stroke: 0;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 540px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    padding: 0.8rem 1.8rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+
+  .btn-primary:hover {
+    background: var(--accent3);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.8rem 1.8rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    font-family: var(--mono);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* FLOATING BADGE */
+  .hero-badge {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    height: 200px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    animation: spin-slow 20s linear infinite;
+  }
+
+  @keyframes spin-slow {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+  }
+
+  .hero-badge-inner {
+    width: 160px;
+    height: 160px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: spin-slow-reverse 20s linear infinite;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  @keyframes spin-slow-reverse {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+
+  .hero-badge-inner span:first-child {
+    font-size: 2rem;
+    display: block;
+  }
+
+  .hero-badge-inner span:last-child {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* SECTION BASE */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 60px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 3rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.8rem;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover {
+    border-color: rgba(0,255,136,0.3);
+    transform: translateY(-4px);
+  }
+
+  .project-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .project-preview {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    height: 140px;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-preview .preview-dots {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.8rem;
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .preview-dots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--border);
+    display: block;
+  }
+
+  .project-preview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding: 2rem 1rem 1rem;
+    width: 100%;
+    height: 100%;
+  }
+
+  .preview-block {
+    background: rgba(0,255,136,0.06);
+    border: 1px solid rgba(0,255,136,0.1);
+    border-radius: 2px;
+  }
+
+  .preview-block.tall { grid-row: span 2; }
+
+  .project-type {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .project-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    margin-top: 1rem;
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+
+  .project-card:hover .project-link { gap: 0.7rem; }
+
+  /* SKILLS */
+  .skills-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(30,30,46,0.5);
+  }
+
+  .skill-name {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .skill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .skill-bar {
+    width: 100px;
+    height: 2px;
+    background: var(--border);
+    position: relative;
+  }
+
+  .skill-fill {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+  }
+
+  /* EXPERIENCE */
+  .exp-timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .exp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  .exp-item {
+    position: relative;
+    padding-bottom: 3rem;
+    padding-left: 1.5rem;
+  }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -2.4rem;
+    top: 0.3rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+
+  .exp-period {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-role {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-company {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .exp-list {
+    list-style: none;
+  }
+
+  .exp-list li {
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding: 0.3rem 0;
+    display: flex;
+    gap: 0.6rem;
+    line-height: 1.5;
+  }
+
+  .exp-list li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    font-family: var(--mono);
+  }
+
+  /* CERTS */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.2rem;
+    transition: border-color 0.2s;
+  }
+
+  .cert-card:hover {
+    border-color: var(--accent2);
+  }
+
+  .cert-org {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .cert-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+  }
+
+  .cert-note {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+  }
+
+  /* CERT HOVER PREVIEW */
+  .cert-card {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .cert-card[data-pdf] {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .cert-preview-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 30px rgba(0,255,136,0.15), 0 20px 60px rgba(0,0,0,0.6);
+    pointer-events: none;
+    max-width: 340px;
+    width: 340px;
+  }
+
+  .cert-preview-popup.active {
+    display: block;
+  }
+
+  .cert-preview-popup img {
+    width: 100%;
+    display: block;
+  }
+
+  .cert-preview-popup .preview-label {
+    padding: 0.6rem 0.8rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .cert-preview-popup .preview-label::before {
+    content: '↗';
+  }
+
+  .cert-no-preview {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .cert-no-preview span {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Hover glow on cert cards */
+  .cert-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(0,255,136,0.08);
+  }
+
+  .cert-eye-icon {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .cert-card:hover .cert-eye-icon {
+    color: var(--accent);
+  }
+
+  /* CONTACT */
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .contact-info { }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-val {
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  .contact-val a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-val a:hover { color: var(--accent); }
+
+  .contact-cta {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    text-align: center;
+  }
+
+  .contact-cta p {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .contact-cta small {
+    color: var(--muted);
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* GLOW ORBS */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .orb-1 {
+    width: 500px; height: 500px;
+    background: var(--accent);
+    top: -100px; left: -100px;
+  }
+
+  .orb-2 {
+    width: 400px; height: 400px;
+    background: var(--accent2);
+    bottom: 20%; right: -100px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* FEATURED CARD (Draft App) */
+  .featured-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured-card::before {
+    content: 'FEATURED';
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    background: rgba(0,255,136,0.1);
+    padding: 0.25rem 0.6rem;
+    border: 1px solid rgba(0,255,136,0.2);
+  }
+
+  .featured-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3), var(--accent2));
+  }
+
+  .featured-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .featured-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1rem 0;
+  }
+
+  .featured-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .feat-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .feat-point {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 0.8rem 1rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .feat-point strong {
+    display: block;
+    color: var(--text);
+    font-size: 0.82rem;
+    margin-bottom: 0.2rem;
+  }
+
+  @media (max-width: 768px) {
+    .skills-layout, .contact-wrapper, .feat-points { grid-template-columns: 1fr; }
+    .hero-badge { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    nav .nav-links { display: none; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SR.DEV</div>
+  <ul class="nav-links">
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experiencia">Experiencia</a></li>
+    <li><a href="#certificaciones">Certs</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Disponible para proyectos</div>
+    <h1>
+      <span>SAMUEL</span>
+      <span class="highlight">ROJAS</span>
+    </h1>
+    <p class="hero-desc">
+      Analista y desarrollador de software full-stack. Construyo desde sistemas IoT con ESP32 hasta PWAs en tiempo real, automatizaciones con n8n e integraciones con IA. Si un proyecto lo necesita, lo aprendo y lo entrego.
+    </p>
+    <div class="hero-ctas">
+      <a href="https://github.com/samueldavidhhuhuhhuhuh" target="_blank" class="btn-primary">Ver GitHub →</a>
+      <a href="https://www.linkedin.com/in/samuel-david-rojas-monroy-a6b873264" class="btn-outline">Contactar</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">6+</span>
+        <span class="stat-label">Años exp.</span>
+      </div>
+      <div>
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Proyectos web</span>
+      </div>
+      <div>
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Certificaciones</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div class="hero-badge-inner">
+      <span>🚀</span>
+      <span>Full-Stack · IoT · IA · Automatización</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="section-label">Trabajo</div>
+  <h2 class="section-title">Proyectos Destacados</h2>
+
+  <!-- FEATURED: DRAFT APP -->
+  <div class="featured-card">
+    <div class="featured-title">Draft App ⚽</div>
+    <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">Plataforma de gestión de torneos deportivos en tiempo real</div>
+    <div class="featured-stack">
+      <span class="tag">React</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">Vite</span>
+      <span class="tag">Supabase</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">Realtime</span>
+      <span class="tag">Tailwind CSS</span>
+      <span class="tag">PWA</span>
+    </div>
+    <p class="featured-desc">
+      PWA para la gestión integral de torneos de fútbol amateur. Administradores controlan partidos y estadísticas en tiempo real, mientras jugadores e invitados consultan información al instante desde cualquier dispositivo.
+    </p>
+    <div class="feat-points">
+      <div class="feat-point">
+        <strong>⚡ Realtime bidireccional</strong>
+        Cambios del admin se reflejan instantáneamente en todos los dispositivos usando Supabase Realtime.
+      </div>
+      <div class="feat-point">
+        <strong>🔐 Auth por roles</strong>
+        Tres niveles (admin, jugador, invitado) con políticas RLS en PostgreSQL.
+      </div>
+      <div class="feat-point">
+        <strong>🕸️ Diagrama de araña SVG</strong>
+        Visualización de habilidades generada matemáticamente sin librerías externas.
+      </div>
+      <div class="feat-point">
+        <strong>📱 PWA mobile-first</strong>
+        Diseñada para usarse en cancha desde el celular, instalable en pantalla de inicio.
+      </div>
+    </div>
+    <span style="font-family:var(--mono);font-size:0.72rem;color:var(--muted);">Rol: Diseño · Arquitectura · Desarrollo full-stack</span>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- DeveloperZeta -->
+    <a href="https://samueldavidhhuhuhhuhuh.github.io/DeveloperZeta" target="_blank" class="project-card">
+      <div class="project-preview">
+        <div class="preview-dots"><span></span><span></span><span></span></div>
+        <div class="project-preview-grid">
+          <div class="preview-block tall"></div>
+          <div class="preview-block"></div>
+          <div class="preview-block"></div>
+        </div>
+      </div>
+      <div class="project-type">Web · Automatización</div>
+      <div class="project-title">Developer Zeta</div>
+      <p class="project-desc">Plataforma con sistema de trazabilidad automatizado entre dos fases de producción para empresa Challenger. Incluye planeación de automatización con IA.</p>
+      <div class="project-tags">
+        <span class="tag">Web</span>
+        <span class="tag">Automatización</span>
+        <span class="tag">IA</span>
+      </div>
+      <span class="project-link">Ver en GitHub →</span>
+    </a>
+
+    <!-- Beauty Project -->
+    <a href="https://samueldavidhhuhuhhuhuh.github.io/Beauty-Project" target="_blank" class="project-card">
+      <div class="project-preview">
+        <div class="preview-dots"><span></span><span></span><span></span></div>
+        <div class="project-preview-grid">
+          <div class="preview-block"></div>
+          <div class="preview-block"></div>
+          <div class="preview-block tall"></div>
+          <div class="preview-block"></div>
+        </div>
+      </div>
+      <div class="project-type">Frontend · E-commerce</div>
+      <div class="project-title">Beauty Project</div>
+      <p class="project-desc">Sitio web orientado al sector de belleza con diseño visual atractivo y experiencia de usuario cuidada.</p>
+      <div class="project-tags">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+      </div>
+      <span class="project-link">Ver en GitHub →</span>
+    </a>
+
+    <!-- ZENIT -->
+    <a href="https://samueldavidhhuhuhhuhuh.github.io/ZENIT" target="_blank" class="project-card">
+      <div class="project-preview">
+        <div class="preview-dots"><span></span><span></span><span></span></div>
+        <div style="font-size:2rem;margin-top:1rem;">🌐</div>
+      </div>
+      <div class="project-type">Full-Stack</div>
+      <div class="project-title">ZENIT</div>
+      <p class="project-desc">Proyecto web con arquitectura completa, mostrando habilidades de desarrollo integral desde el diseño hasta la implementación.</p>
+      <div class="project-tags">
+        <span class="tag">JavaScript</span>
+        <span class="tag">CSS</span>
+        <span class="tag">HTML</span>
+      </div>
+      <span class="project-link">Ver en GitHub →</span>
+    </a>
+
+    <!-- UNIQ -->
+    <a href="https://samueldavidhhuhuhhuhuh.github.io/UNIQ" target="_blank" class="project-card">
+      <div class="project-preview">
+        <div class="preview-dots"><span></span><span></span><span></span></div>
+        <div style="font-size:2rem;margin-top:1rem;">✨</div>
+      </div>
+      <div class="project-type">Web · UI/UX</div>
+      <div class="project-title">UNIQ</div>
+      <p class="project-desc">Diseño único y diferenciado con identidad visual propia. Desarrollado con enfoque en la experiencia de usuario.</p>
+      <div class="project-tags">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JS</span>
+      </div>
+      <span class="project-link">Ver en GitHub →</span>
+    </a>
+
+    <!-- Mutt -->
+    <a href="https://samueldavidhhuhuhhuhuh.github.io/Mutt" target="_blank" class="project-card">
+      <div class="project-preview">
+        <div class="preview-dots"><span></span><span></span><span></span></div>
+        <div style="font-size:2rem;margin-top:1rem;">🐾</div>
+      </div>
+      <div class="project-type">Web · Vibe Coding</div>
+      <div class="project-title">Mutt</div>
+      <p class="project-desc">Proyecto web desarrollado con vibe coding en tiempo inferior a 2 horas. Demuestra velocidad de entrega y adaptabilidad.</p>
+      <div class="project-tags">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JS</span>
+      </div>
+      <span class="project-link">Ver en GitHub →</span>
+    </a>
+
+    <!-- IoT Project -->
+    <div class="project-card" style="cursor:default;">
+      <div class="project-preview">
+        <div class="preview-dots"><span></span><span></span><span></span></div>
+        <div style="font-size:2rem;margin-top:1rem;">📡</div>
+      </div>
+      <div class="project-type">IoT · Hardware · Cisco</div>
+      <div class="project-title">Sistema Monitoreo & Alerta Temprana IoT</div>
+      <p class="project-desc">Desarrollado en el marco de Cisco Networking Academy (IoT Fundamentals). Red de sensores con ESP32 que transmite datos entre nodos via ondas de radio. Un nodo receptor captura la señal, la enruta por MQTT dentro de Docker y la visualiza en Grafana en tiempo real. Evidencia del desarrollo documentada en correos corporativos.</p>
+      <div class="project-tags">
+        <span class="tag">Cisco</span>
+        <span class="tag">ESP32</span>
+        <span class="tag">MicroPython</span>
+        <span class="tag">MQTT</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Grafana</span>
+        <span class="tag">LoRa/Radio</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Tecnologías</div>
+  <h2 class="section-title">Stack & Habilidades</h2>
+  <div class="skills-layout">
+    <div>
+      <div class="skill-group-title">Lenguajes & Frameworks</div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Python / MicroPython</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>JavaScript / TypeScript</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>React · Vite</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>HTML · CSS · Tailwind</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Java · C#</span><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+    </div>
+    <div>
+      <div class="skill-group-title">Bases de Datos & Infraestructura</div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>SQL · MySQL · PostgreSQL</span><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>MongoDB (NoSQL)</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Supabase · Firebase</span><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Docker · MQTT</span><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>WordPress</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+    </div>
+    <div>
+      <div class="skill-group-title">IoT & Hardware</div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>ESP32 · Arduino</span><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Sensores · Redes de radio</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Grafana · Monitoreo</span><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Git · GitHub</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Linux · CLI</span><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+    </div>
+    <div>
+      <div class="skill-group-title">IA, Automatización & Metodologías</div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>n8n · Automatizaciones</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>IA / Vibe Coding</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Análisis funcional · UML</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Scrum · Agile</span><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCIA -->
+<section id="experiencia">
+  <div class="section-label">Historial</div>
+  <h2 class="section-title">Experiencia Laboral</h2>
+  <div class="exp-timeline">
+
+    <div class="exp-item">
+      <div class="exp-period">ENE 2026 — ACTUALIDAD</div>
+      <div class="exp-role">Asistente Técnico / Dev. de Automatización e Integraciones</div>
+      <div class="exp-company">Developer Zeta · Bogotá, Colombia</div>
+      <ul class="exp-list">
+        <li>Optimicé procesos operativos mediante automatizaciones inteligentes con n8n, reduciendo tareas manuales y mejorando tiempos de respuesta.</li>
+        <li>Desarrollo y despliegue de páginas web dinámicas con integración a bases de datos.</li>
+        <li>Implementación de soluciones de Inteligencia Artificial mediante integración con Ollama en entornos de automatización (n8n).</li>
+        <li>Implementé integraciones entre IoT, bases de datos y sistemas de IA para soluciones escalables.</li>
+        <li>Desarrollo de bots para automatización de tareas y comunicación digital.</li>
+        <li>Apoyo en negociación y gestión con clientes y aliados estratégicos.</li>
+        <li>Labores de campo: instalación, configuración y soporte técnico de soluciones tecnológicas.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">JUN 2023 — MAR 2025</div>
+      <div class="exp-role">Administrador de Base de Datos</div>
+      <div class="exp-company">Inversiones Aiken · Bogotá, Colombia</div>
+      <ul class="exp-list">
+        <li>Diseño y optimización de bases de datos relacionales (SQL, MySQL) para grandes volúmenes de información.</li>
+        <li>Administración de MongoDB para estructuras flexibles y aplicaciones en tiempo real.</li>
+        <li>Creación de consultas complejas, procedimientos almacenados y reportes.</li>
+        <li>Integración de bases de datos relacionales y no relacionales según requerimientos del proyecto.</li>
+        <li>Pruebas unitarias, de integración y funcionales para asegurar calidad del código.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">ENE 2019 — JUN 2023</div>
+      <div class="exp-role">Analista de Software</div>
+      <div class="exp-company">Caracter U · Bogotá, Colombia</div>
+      <ul class="exp-list">
+        <li>Levantamiento de requerimientos con usuarios, clientes y stakeholders.</li>
+        <li>Elaboración de casos de uso, diagramas UML, historias de usuario y especificaciones funcionales.</li>
+        <li>Definición de arquitectura funcional y propuesta de soluciones tecnológicas viables.</li>
+        <li>Enlace entre equipo técnico, usuarios finales y negocio.</li>
+        <li>Gestión de control de cambios durante el ciclo de vida del proyecto.</li>
+        <li>Validación de software y análisis de mejora de procesos existentes.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICACIONES -->
+<section id="certificaciones">
+  <div class="section-label">Formación</div>
+  <h2 class="section-title">Educación & Certificaciones</h2>
+  <p style="font-family:var(--mono);font-size:0.72rem;color:var(--muted);margin-bottom:2rem;">Pasa el cursor sobre cada tarjeta para ver la evidencia del certificado.</p>
+  <div class="certs-grid">
+
+ 
+    <div class="cert-card"
+         data-pdf="docs/jala-university.pdf"
+         data-preview=""
+         data-label="Jala University — Ingeniería de Software">
+      <span class="cert-eye-icon">👁 ver</span>
+      <div class="cert-org">Jala University</div>
+      <div class="cert-name">Ing. en Software Comercial — Diseño y Arquitectura</div>
+      <div class="cert-note">2024 – 2028 (en curso)</div>
+    </div>
+
+    <!-- ✅ CON ARCHIVO → docs/devnet-associate.pdf -->
+    <div class="cert-card"
+         data-pdf="docs/devnet-associate.pdf"
+         data-preview=""
+         data-label="DevNet Associate — Cisco Networking Academy">
+      <span class="cert-eye-icon">👁 ver</span>
+      <div class="cert-org">Cisco Networking Academy</div>
+      <div class="cert-name">DevNet Associate</div>
+      <div class="cert-note">01 Nov 2023 · Nota: 100/100 ★</div>
+    </div>
+
+    <!-- ✅ CON ARCHIVO → docs/linux-essentials.pdf -->
+    <div class="cert-card"
+         data-pdf="docs/linux-essentials.pdf"
+         data-preview=""
+         data-label="NDG Linux Essentials — Cisco Networking Academy">
+      <span class="cert-eye-icon">👁 ver</span>
+      <div class="cert-org">Cisco Networking Academy</div>
+      <div class="cert-name">NDG Linux Essentials</div>
+      <div class="cert-note">30 Oct 2023 · Nota: 100/100 ★</div>
+    </div>
+
+    <!-- ✅ CON ARCHIVO → docs/linux-unhatched.pdf -->
+    <div class="cert-card"
+         data-pdf="docs/linux-unhatched.pdf"
+         data-preview=""
+         data-label="NDG Linux Unhatched — Cisco Networking Academy">
+      <span class="cert-eye-icon">👁 ver</span>
+      <div class="cert-org">Cisco Networking Academy</div>
+      <div class="cert-name">NDG Linux Unhatched</div>
+      <div class="cert-note">08 Feb 2023</div>
+    </div>
+
+    <!-- ✅ CON ARCHIVO → docs/python-pcap.pdf -->
+    <div class="cert-card"
+         data-pdf="docs/python-pcap.pdf"
+         data-preview=""
+         data-label="PCAP Python — Cisco Networking Academy">
+      <span class="cert-eye-icon">👁 ver</span>
+      <div class="cert-org">Cisco Networking Academy</div>
+      <div class="cert-name">PCAP – Programming Essentials in Python</div>
+      <div class="cert-note">31 Oct 2022</div>
+    </div>
+
+    <!-- ✅ CON ARCHIVO → docs/iot-fundamentals.pdf -->
+    <div class="cert-card"
+         data-pdf="docs/iot-fundamentals.pdf"
+         data-preview=""
+         data-label="IoT Fundamentals — Cisco Networking Academy">
+      <span class="cert-eye-icon">👁 ver</span>
+      <div class="cert-org">Cisco Networking Academy</div>
+      <div class="cert-name">IoT Fundamentals: Connecting Things</div>
+      <div class="cert-note">15 Jun 2022 · Proyecto: Ducha inteligente</div>
+    </div>
+
+    <!--
+      ✅ CON ARCHIVO → docs/cybersecurity.pdf  (PDF del certificado)
+      ✅ CON IMAGEN  → docs/cybersecurity-intro.png  (Captura_de_pantalla_20260301_215420.png)
+      Módulos adicionales con imagen:
+        docs/cybersecurity-admin.png      ← Captura_de_pantalla_20260301_215325.png
+        docs/cybersecurity-threats.png    ← Captura_de_pantalla_20260301_215331.png
+        docs/cybersecurity-safeguards.png ← Captura_de_pantalla_20260301_215340.png
+        docs/cybersecurity-defense.png    ← Captura_de_pantalla_20260301_215346.png
+        docs/cybersecurity-resources.png  ← Captura_de_pantalla_20260301_215352.png
+    -->
+    <div class="cert-card"
+         data-pdf="docs/cybersecurity.pdf"
+         data-preview="docs/cybersecurity-intro.png"
+         data-label="Introducción a la Ciberseguridad — Cisco / Sec. Educación CR">
+      <span class="cert-eye-icon">👁 ver</span>
+      <div class="cert-org">Cisco · Sec. Educación Costa Rica</div>
+      <div class="cert-name">Introducción a la Ciberseguridad</div>
+      <div class="cert-note">15 Jul 2022 · 5 módulos completados</div>
+    </div>
+
+    <!--
+      ✅ CON IMAGEN → docs/data-analytics-portfolio.png  (Captura_de_pantalla_20260301_215529.png)
+      ✅ CON IMAGEN → docs/data-analytics-gathering.png  (Captura_de_pantalla_20260301_215534.png)
+      ⚠️ SIN PDF   → Si Cisco te generó certificado PDF guárdalo como: docs/data-analytics.pdf
+    -->
+    <div class="cert-card"
+         data-pdf="docs/data-analytics.png"
+         data-preview="docs/data-analytics-portfolio.png"
+         data-label="Data Analytics Essentials — Cisco Networking Academy">
+      <span class="cert-eye-icon">👁 ver</span>
+      <div class="cert-org">Cisco Networking Academy</div>
+      <div class="cert-name">Data Analytics Essentials</div>
+      <div class="cert-note">Sept 2024 · 30 hrs · Módulos: Portfolio · Data Gathering</div>
+    </div>
+
+    <!-- ⚠️ SIN ARCHIVO → Sube tu certificado de Rosario como: docs/rosario-gestion.pdf -->
+    <div class="cert-card"
+         data-pdf="docs/rosario-gestion.pdf"
+         data-preview=""
+         data-label="Gestión del Tiempo TI — Universidad del Rosario">
+      <span class="cert-eye-icon">👁 ver</span>
+      <div class="cert-org">Universidad del Rosario</div>
+      <div class="cert-name">Gestión del Tiempo y Perfil en el Sector TI</div>
+      <div class="cert-note">2022</div>
+    </div>
+
+    <div class="cert-card"
+         data-pdf="docs/jovenes-creativos.pdf"
+         data-preview=""
+         data-label="JavaScript, CSS y HTML — Jóvenes Creativos">
+      <span class="cert-eye-icon">👁 ver</span>
+      <div class="cert-org">Jóvenes Creativos</div>
+      <div class="cert-name">JavaScript, CSS y HTML — Beca completa</div>
+      <div class="cert-note">06 Dic 2023</div>
+    </div>
+
+    <!--
+      ✅ CON IMAGEN → docs/stem-olimpiadas.png
+      Renombrar: 1772420300414_Captura_de_pantalla_20260301_214948.png → docs/stem-olimpiadas.png
+    -->
+    <div class="cert-card"
+         data-pdf=""
+         data-preview="docs/stem-olimpiadas.png"
+         data-label="Finalista Olimpiadas STEM — Bogotá D.C.">
+      <span class="cert-eye-icon">👁 ver</span>
+      <div class="cert-org">Olimpiadas STEM · Bogotá D.C.</div>
+      <div class="cert-name">Finalista Olimpiadas STEM — Puntaje preferente "Jóvenes a la U"</div>
+      <div class="cert-note">Nov 2023 · Colegio Jorge Gaitán Cortes (IED)</div>
+    </div>
+
+    
+
+  </div>
+</section>
+
+<!-- POPUP DE PREVIEW (único, se reutiliza para todas las tarjetas) -->
+<div class="cert-preview-popup" id="certPopup">
+  <img src="" alt="Certificado" id="certPopupImg" style="display:none;">
+  <div class="cert-no-preview" id="certPopupNo" style="display:none;">
+    <span>📄</span>
+    Click para abrir el PDF
+  </div>
+  <div class="preview-label" id="certPopupLabel"></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-label">Contacto</div>
+  <h2 class="section-title">Trabajemos Juntos</h2>
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val"><a href="mailto:samueldavidvida@gmail.com">samueldavidvida@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div>
+          <div class="contact-label">WhatsApp / Celular</div>
+          <div class="contact-val"><a href="tel:+573043538450">+57 304 353 8450</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🐙</div>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-val"><a href="https://github.com/samueldavidhhuhuhhuhuh" target="_blank">github.com/samueldavidhhuhuhhuhuh</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Ubicación</div>
+          <div class="contact-val">Bogotá D.C., Colombia</div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="contact-cta">
+      <p>¿Tienes un proyecto<br>en mente?</p>
+      <small>Desde webs hasta IoT, automatizaciones e IA — lo construimos.</small>
+      <a href="https://www.linkedin.com/in/samuel-david-rojas-monroy-a6b873264" class="btn-primary">Enviar mensaje →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="margin-bottom:0.5rem;">Samuel Rojas · Software Developer · Bogotá, Colombia</div>
+  <div style="color:#374151;">Construido con HTML · CSS · JS puro — sin frameworks, sin excusas.</div>
+</footer>
+
+<script>
+(function() {
+  const popup  = document.getElementById('certPopup');
+  const popImg = document.getElementById('certPopupImg');
+  const popNo  = document.getElementById('certPopupNo');
+  const popLbl = document.getElementById('certPopupLabel');
+  const MARGIN = 16;
+
+  function positionPopup(e) {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const pw = popup.offsetWidth  || 340;
+    const ph = popup.offsetHeight || 260;
+    let x = e.clientX + 24;
+    let y = e.clientY - 20;
+    if (x + pw > vw - MARGIN) x = e.clientX - pw - 24;
+    if (y + ph > vh - MARGIN) y = vh - ph - MARGIN;
+    if (y < MARGIN) y = MARGIN;
+    popup.style.left = x + 'px';
+    popup.style.top  = y + 'px';
+  }
+
+  document.querySelectorAll('.cert-card[data-label]').forEach(card => {
+    const preview = card.dataset.preview || '';
+    const pdf     = card.dataset.pdf     || '';
+    const label   = card.dataset.label   || '';
+
+    if (!preview && !pdf) return;
+
+    card.addEventListener('mouseenter', function(e) {
+      if (preview) {
+        popImg.src = preview;
+        popImg.style.display = 'block';
+        popNo.style.display  = 'none';
+      } else {
+        popImg.style.display = 'none';
+        popNo.style.display  = 'block';
+      }
+      popLbl.textContent = label || 'Ver certificado';
+      popup.classList.add('active');
+      positionPopup(e);
+    });
+
+    card.addEventListener('mousemove', positionPopup);
+
+    card.addEventListener('mouseleave', function() {
+      popup.classList.remove('active');
+    });
+
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function() {
+      const target = pdf || preview;
+      if (target) window.open(target, '_blank');
+    });
+  });
+})();
+</script>
+</body>
+</html>
