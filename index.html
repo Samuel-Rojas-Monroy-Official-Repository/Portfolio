@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Samuel Rojas — Software Developer</title>
+<title>Samuel Rojas — Desarrollo Web · Automatizaciones · IoT</title>
+<meta name="description" content="Desarrollo web full-stack, automatizaciones con IA y sistemas IoT para startups, agencias y negocios en Bogotá y remoto.">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -20,7 +21,6 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -30,12 +30,11 @@
     overflow-x: hidden;
   }
 
-  /* GRID BACKGROUND */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: 
+    background-image:
       linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
     background-size: 60px 60px;
@@ -52,7 +51,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(10,10,15,0.85);
+    background: rgba(10,10,15,0.9);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
@@ -164,6 +163,7 @@
     text-transform: uppercase;
     transition: all 0.2s;
     clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    display: inline-block;
   }
 
   .btn-primary:hover {
@@ -181,6 +181,7 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     transition: all 0.2s;
+    display: inline-block;
   }
 
   .btn-outline:hover {
@@ -254,10 +255,7 @@
     to { transform: rotate(-360deg); }
   }
 
-  .hero-badge-inner span:first-child {
-    font-size: 2rem;
-    display: block;
-  }
+  .hero-badge-inner span:first-child { font-size: 2rem; display: block; }
 
   .hero-badge-inner span:last-child {
     font-family: var(--mono);
@@ -303,6 +301,67 @@
     letter-spacing: -0.02em;
   }
 
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .service-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.8rem;
+    position: relative;
+    transition: all 0.3s;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover {
+    border-color: rgba(0,255,136,0.25);
+    transform: translateY(-3px);
+  }
+
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-icon {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .service-name {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .service-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
   /* PROJECTS */
   .projects-grid {
     display: grid;
@@ -325,8 +384,7 @@
   .project-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     height: 2px;
     background: linear-gradient(90deg, var(--accent), var(--accent3));
     transform: scaleX(0);
@@ -339,9 +397,7 @@
     transform: translateY(-4px);
   }
 
-  .project-card:hover::before {
-    transform: scaleX(1);
-  }
+  .project-card:hover::before { transform: scaleX(1); }
 
   .project-preview {
     background: var(--bg);
@@ -365,8 +421,7 @@
   }
 
   .preview-dots span {
-    width: 7px;
-    height: 7px;
+    width: 7px; height: 7px;
     border-radius: 50%;
     background: var(--border);
     display: block;
@@ -475,16 +530,14 @@
   }
 
   .skill-dot {
-    width: 6px;
-    height: 6px;
+    width: 6px; height: 6px;
     border-radius: 50%;
     background: var(--accent);
     flex-shrink: 0;
   }
 
   .skill-bar {
-    width: 100px;
-    height: 2px;
+    width: 100px; height: 2px;
     background: var(--border);
     position: relative;
   }
@@ -521,8 +574,7 @@
     position: absolute;
     left: -2.4rem;
     top: 0.3rem;
-    width: 8px;
-    height: 8px;
+    width: 8px; height: 8px;
     border-radius: 50%;
     background: var(--accent);
     box-shadow: 0 0 12px var(--accent);
@@ -548,9 +600,7 @@
     margin-bottom: 0.8rem;
   }
 
-  .exp-list {
-    list-style: none;
-  }
+  .exp-list { list-style: none; }
 
   .exp-list li {
     font-size: 0.85rem;
@@ -580,10 +630,13 @@
     border: 1px solid var(--border);
     padding: 1.2rem;
     transition: border-color 0.2s;
+    position: relative;
+    cursor: pointer;
   }
 
   .cert-card:hover {
-    border-color: var(--accent2);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(0,255,136,0.08);
   }
 
   .cert-org {
@@ -608,18 +661,20 @@
     color: var(--accent);
   }
 
-  /* CERT HOVER PREVIEW */
-  .cert-card {
-    position: relative;
-    cursor: pointer;
+  .cert-eye-icon {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
   }
 
-  .cert-card[data-pdf] {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
+  .cert-card:hover .cert-eye-icon { color: var(--accent); }
 
+  /* CERT POPUP */
   .cert-preview-popup {
     display: none;
     position: fixed;
@@ -632,14 +687,8 @@
     width: 340px;
   }
 
-  .cert-preview-popup.active {
-    display: block;
-  }
-
-  .cert-preview-popup img {
-    width: 100%;
-    display: block;
-  }
+  .cert-preview-popup.active { display: block; }
+  .cert-preview-popup img { width: 100%; display: block; }
 
   .cert-preview-popup .preview-label {
     padding: 0.6rem 0.8rem;
@@ -653,9 +702,7 @@
     gap: 0.4rem;
   }
 
-  .cert-preview-popup .preview-label::before {
-    content: '↗';
-  }
+  .cert-preview-popup .preview-label::before { content: '↗'; }
 
   .cert-no-preview {
     padding: 2.5rem 1.5rem;
@@ -665,31 +712,81 @@
     color: var(--muted);
   }
 
-  .cert-no-preview span {
-    display: block;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+  .cert-no-preview span { display: block; font-size: 2rem; margin-bottom: 0.5rem; }
+
+  /* FEATURED CARD */
+  .featured-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Hover glow on cert cards */
-  .cert-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 20px rgba(0,255,136,0.08);
-  }
-
-  .cert-eye-icon {
+  .featured-card::before {
+    content: 'CASO DE ÉXITO';
     position: absolute;
-    top: 0.8rem;
-    right: 0.8rem;
-    font-size: 0.7rem;
-    color: var(--muted);
+    top: 1.2rem; right: 1.5rem;
     font-family: var(--mono);
-    letter-spacing: 0.05em;
-    transition: color 0.2s;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    background: rgba(0,255,136,0.1);
+    padding: 0.25rem 0.6rem;
+    border: 1px solid rgba(0,255,136,0.2);
   }
 
-  .cert-card:hover .cert-eye-icon {
-    color: var(--accent);
+  .featured-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3), var(--accent2));
+  }
+
+  .featured-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .featured-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1rem 0;
+  }
+
+  .featured-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .feat-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .feat-point {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 0.8rem 1rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .feat-point strong {
+    display: block;
+    color: var(--text);
+    font-size: 0.82rem;
+    margin-bottom: 0.2rem;
   }
 
   /* CONTACT */
@@ -700,8 +797,6 @@
     align-items: center;
   }
 
-  .contact-info { }
-
   .contact-item {
     display: flex;
     align-items: center;
@@ -711,8 +806,7 @@
   }
 
   .contact-icon {
-    width: 40px;
-    height: 40px;
+    width: 40px; height: 40px;
     background: var(--surface);
     border: 1px solid var(--border);
     display: flex;
@@ -777,7 +871,7 @@
     z-index: 1;
   }
 
-  /* GLOW ORBS */
+  /* ORBS */
   .orb {
     position: fixed;
     border-radius: 50%;
@@ -787,19 +881,9 @@
     z-index: 0;
   }
 
-  .orb-1 {
-    width: 500px; height: 500px;
-    background: var(--accent);
-    top: -100px; left: -100px;
-  }
+  .orb-1 { width: 500px; height: 500px; background: var(--accent); top: -100px; left: -100px; }
+  .orb-2 { width: 400px; height: 400px; background: var(--accent2); bottom: 20%; right: -100px; }
 
-  .orb-2 {
-    width: 400px; height: 400px;
-    background: var(--accent2);
-    bottom: 20%; right: -100px;
-  }
-
-  /* DIVIDER */
   .divider {
     width: 100%;
     height: 1px;
@@ -808,100 +892,20 @@
     margin: 0 auto;
   }
 
-  /* FEATURED CARD (Draft App) */
-  .featured-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 2.5rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .featured-card::before {
-    content: 'FEATURED';
-    position: absolute;
-    top: 1.2rem;
-    right: 1.5rem;
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    color: var(--accent);
-    background: rgba(0,255,136,0.1);
-    padding: 0.25rem 0.6rem;
-    border: 1px solid rgba(0,255,136,0.2);
-  }
-
-  .featured-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent3), var(--accent2));
-  }
-
-  .featured-title {
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
-  }
-
-  .featured-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin: 1rem 0;
-  }
-
-  .featured-desc {
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  .feat-points {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.8rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .feat-point {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    padding: 0.8rem 1rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  .feat-point strong {
-    display: block;
-    color: var(--text);
-    font-size: 0.82rem;
-    margin-bottom: 0.2rem;
-  }
-
   @media (max-width: 768px) {
     .skills-layout, .contact-wrapper, .feat-points { grid-template-columns: 1fr; }
     .hero-badge { display: none; }
     .hero-stats { gap: 1.5rem; }
     nav .nav-links { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
   }
 
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .hero-content > * {
-    animation: fadeUp 0.6s ease both;
-  }
-
+  .hero-content > * { animation: fadeUp 0.6s ease both; }
   .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
   .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
   .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
@@ -918,37 +922,37 @@
 <nav>
   <div class="nav-logo">SR.DEV</div>
   <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
     <li><a href="#proyectos">Proyectos</a></li>
-    <li><a href="#skills">Skills</a></li>
+    <li><a href="#skills">Stack</a></li>
     <li><a href="#experiencia">Experiencia</a></li>
-    <li><a href="#certificaciones">Certs</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#contacto">Contactar</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-content">
-    <div class="hero-tag">Disponible para proyectos</div>
+    <div class="hero-tag">Disponible para nuevos proyectos · Bogotá &amp; Remoto</div>
     <h1>
       <span>SAMUEL</span>
       <span class="highlight">ROJAS</span>
     </h1>
     <p class="hero-desc">
-      Analista y desarrollador de software full-stack. Construyo desde sistemas IoT con ESP32 hasta PWAs en tiempo real, automatizaciones con n8n e integraciones con IA. Si un proyecto lo necesita, lo aprendo y lo entrego.
+      Construyo lo que tu equipo necesita: apps web, automatizaciones con IA y sistemas IoT. Sin procesos largos, sin excusas. Si el proyecto lo requiere, lo aprendo y lo entrego.
     </p>
     <div class="hero-ctas">
-      <a href="https://github.com/samueldavidhhuhuhhuhuh" target="_blank" class="btn-primary">Ver GitHub →</a>
-      <a href="https://www.linkedin.com/in/samuel-david-rojas-monroy-a6b873264" class="btn-outline">Contactar</a>
+      <a href="#contacto" class="btn-primary">Hablar de tu proyecto →</a>
+      <a href="https://github.com/Samuel-Rojas-Monroy-Official-Repository" target="_blank" class="btn-outline">Ver GitHub</a>
     </div>
     <div class="hero-stats">
       <div>
         <span class="stat-num">6+</span>
-        <span class="stat-label">Años exp.</span>
+        <span class="stat-label">Años de exp.</span>
       </div>
       <div>
-        <span class="stat-num">5+</span>
-        <span class="stat-label">Proyectos web</span>
+        <span class="stat-num">3</span>
+        <span class="stat-label">Servicios core</span>
       </div>
       <div>
         <span class="stat-num">10+</span>
@@ -958,23 +962,91 @@
   </div>
   <div class="hero-badge">
     <div class="hero-badge-inner">
-      <span>🚀</span>
-      <span>Full-Stack · IoT · IA · Automatización</span>
+      <span>⚡</span>
+      <span>Web · IA · IoT · Automatización</span>
     </div>
   </div>
 </div>
 
 <div class="divider"></div>
 
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="section-label">Qué hago</div>
+  <h2 class="section-title">Servicios</h2>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <span class="service-icon">🌐</span>
+      <div class="service-name">Desarrollo Web Full-Stack</div>
+      <p class="service-desc">Apps web y PWAs completas: desde el diseño hasta producción. React, Supabase, PostgreSQL, autenticación por roles y datos en tiempo real.</p>
+      <div class="service-tags">
+        <span class="tag">React</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Supabase</span>
+        <span class="tag">Tailwind</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">🤖</span>
+      <div class="service-name">Automatizaciones con IA</div>
+      <p class="service-desc">Conecto tus sistemas, elimino tareas manuales e integro modelos de IA a tus flujos de trabajo usando n8n y Ollama. Desde notificaciones hasta pipelines completos.</p>
+      <div class="service-tags">
+        <span class="tag">n8n</span>
+        <span class="tag">Ollama</span>
+        <span class="tag">APIs</span>
+        <span class="tag">Bots</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">📡</span>
+      <div class="service-name">Sistemas IoT</div>
+      <p class="service-desc">Redes de sensores con ESP32, transmisión de datos por MQTT, visualización en tiempo real con Grafana. Desde el hardware hasta el dashboard.</p>
+      <div class="service-tags">
+        <span class="tag">ESP32</span>
+        <span class="tag">MQTT</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Grafana</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">🗄️</span>
+      <div class="service-name">Bases de Datos &amp; Integraciones</div>
+      <p class="service-desc">Diseño, optimización y conexión de bases de datos relacionales y NoSQL. Consultas complejas, APIs y reportes para que tus datos trabajen para ti.</p>
+      <div class="service-tags">
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag">Firebase</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA inline -->
+  <div style="background:var(--surface);border:1px solid var(--border);padding:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
+    <div>
+      <div style="font-size:1.1rem;font-weight:700;margin-bottom:0.3rem;">¿Tu proyecto no encaja en una sola categoría?</div>
+      <div style="font-size:0.85rem;color:var(--muted);">Los mejores proyectos mezclan varias cosas. Cuéntame qué necesitas y te digo cómo lo resolvemos.</div>
+    </div>
+    <a href="https://wa.me/573043538450?text=Hola%20Samuel%2C%20vi%20tu%20portafolio%20y%20quiero%20hablar%20de%20un%20proyecto." target="_blank" class="btn-primary">Escribir por WhatsApp →</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- PROYECTOS -->
 <section id="proyectos">
-  <div class="section-label">Trabajo</div>
-  <h2 class="section-title">Proyectos Destacados</h2>
+  <div class="section-label">Trabajo real</div>
+  <h2 class="section-title">Proyectos</h2>
 
   <!-- FEATURED: DRAFT APP -->
   <div class="featured-card">
     <div class="featured-title">Draft App ⚽</div>
-    <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">Plataforma de gestión de torneos deportivos en tiempo real</div>
+    <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">PWA de gestión de torneos deportivos en tiempo real — diseño, arquitectura y desarrollo completo</div>
     <div class="featured-stack">
       <span class="tag">React</span>
       <span class="tag">TypeScript</span>
@@ -986,32 +1058,31 @@
       <span class="tag">PWA</span>
     </div>
     <p class="featured-desc">
-      PWA para la gestión integral de torneos de fútbol amateur. Administradores controlan partidos y estadísticas en tiempo real, mientras jugadores e invitados consultan información al instante desde cualquier dispositivo.
+      El cliente necesitaba controlar torneos de fútbol amateur desde el celular, en cancha, con múltiples dispositivos sincronizados. Construí una PWA completa: administradores gestionan partidos y estadísticas en tiempo real, jugadores e invitados consultan resultados al instante desde cualquier dispositivo. Cero fricción, cero retrasos.
     </p>
     <div class="feat-points">
       <div class="feat-point">
         <strong>⚡ Realtime bidireccional</strong>
-        Cambios del admin se reflejan instantáneamente en todos los dispositivos usando Supabase Realtime.
+        Cambios del admin se reflejan al instante en todos los dispositivos conectados vía Supabase Realtime.
       </div>
       <div class="feat-point">
         <strong>🔐 Auth por roles</strong>
-        Tres niveles (admin, jugador, invitado) con políticas RLS en PostgreSQL.
+        Tres niveles de acceso (admin, jugador, invitado) con políticas RLS en PostgreSQL.
       </div>
       <div class="feat-point">
-        <strong>🕸️ Diagrama de araña SVG</strong>
-        Visualización de habilidades generada matemáticamente sin librerías externas.
+        <strong>🕸️ Diagrama SVG generativo</strong>
+        Visualización de habilidades calculada matemáticamente, sin librerías externas.
       </div>
       <div class="feat-point">
-        <strong>📱 PWA mobile-first</strong>
-        Diseñada para usarse en cancha desde el celular, instalable en pantalla de inicio.
+        <strong>📱 Mobile-first, instalable</strong>
+        Diseñada para usarse en cancha. Instalable en pantalla de inicio como app nativa.
       </div>
     </div>
-    <span style="font-family:var(--mono);font-size:0.72rem;color:var(--muted);">Rol: Diseño · Arquitectura · Desarrollo full-stack</span>
+    <a href="https://github.com/Samuel-Rojas-Monroy-Official-Repository" target="_blank" class="project-link">Ver código en GitHub →</a>
   </div>
 
   <div class="projects-grid">
 
-    <!-- DeveloperZeta -->
     <a href="https://samueldavidhhuhuhhuhuh.github.io/DeveloperZeta" target="_blank" class="project-card">
       <div class="project-preview">
         <div class="preview-dots"><span></span><span></span><span></span></div>
@@ -1021,18 +1092,18 @@
           <div class="preview-block"></div>
         </div>
       </div>
-      <div class="project-type">Web · Automatización</div>
-      <div class="project-title">Developer Zeta</div>
-      <p class="project-desc">Plataforma con sistema de trazabilidad automatizado entre dos fases de producción para empresa Challenger. Incluye planeación de automatización con IA.</p>
+      <div class="project-type">Web · Automatización · IA</div>
+      <div class="project-title">Developer Zeta — Trazabilidad</div>
+      <p class="project-desc">Sistema de trazabilidad automatizado entre dos fases de producción para empresa Challenger. Integra IA para planeación y reduce errores operativos en tiempo real.</p>
       <div class="project-tags">
         <span class="tag">Web</span>
-        <span class="tag">Automatización</span>
+        <span class="tag">n8n</span>
         <span class="tag">IA</span>
+        <span class="tag">DB</span>
       </div>
-      <span class="project-link">Ver en GitHub →</span>
+      <span class="project-link">Ver proyecto →</span>
     </a>
 
-    <!-- Beauty Project -->
     <a href="https://samueldavidhhuhuhhuhuh.github.io/Beauty-Project" target="_blank" class="project-card">
       <div class="project-preview">
         <div class="preview-dots"><span></span><span></span><span></span></div>
@@ -1045,16 +1116,15 @@
       </div>
       <div class="project-type">Frontend · E-commerce</div>
       <div class="project-title">Beauty Project</div>
-      <p class="project-desc">Sitio web orientado al sector de belleza con diseño visual atractivo y experiencia de usuario cuidada.</p>
+      <p class="project-desc">Sitio web para el sector de belleza: identidad visual cuidada, experiencia de usuario optimizada y estructura lista para escalar a e-commerce.</p>
       <div class="project-tags">
         <span class="tag">HTML</span>
         <span class="tag">CSS</span>
         <span class="tag">JavaScript</span>
       </div>
-      <span class="project-link">Ver en GitHub →</span>
+      <span class="project-link">Ver proyecto →</span>
     </a>
 
-    <!-- ZENIT -->
     <a href="https://samueldavidhhuhuhhuhuh.github.io/ZENIT" target="_blank" class="project-card">
       <div class="project-preview">
         <div class="preview-dots"><span></span><span></span><span></span></div>
@@ -1062,16 +1132,15 @@
       </div>
       <div class="project-type">Full-Stack</div>
       <div class="project-title">ZENIT</div>
-      <p class="project-desc">Proyecto web con arquitectura completa, mostrando habilidades de desarrollo integral desde el diseño hasta la implementación.</p>
+      <p class="project-desc">Proyecto web con arquitectura completa. Demuestra integración front-to-back, desde diseño hasta implementación en producción.</p>
       <div class="project-tags">
         <span class="tag">JavaScript</span>
         <span class="tag">CSS</span>
         <span class="tag">HTML</span>
       </div>
-      <span class="project-link">Ver en GitHub →</span>
+      <span class="project-link">Ver proyecto →</span>
     </a>
 
-    <!-- UNIQ -->
     <a href="https://samueldavidhhuhuhhuhuh.github.io/UNIQ" target="_blank" class="project-card">
       <div class="project-preview">
         <div class="preview-dots"><span></span><span></span><span></span></div>
@@ -1079,49 +1148,45 @@
       </div>
       <div class="project-type">Web · UI/UX</div>
       <div class="project-title">UNIQ</div>
-      <p class="project-desc">Diseño único y diferenciado con identidad visual propia. Desarrollado con enfoque en la experiencia de usuario.</p>
+      <p class="project-desc">Diseño con identidad visual propia y enfoque en experiencia de usuario. Pensado para diferenciarse desde la primera interacción.</p>
       <div class="project-tags">
         <span class="tag">HTML</span>
         <span class="tag">CSS</span>
         <span class="tag">JS</span>
       </div>
-      <span class="project-link">Ver en GitHub →</span>
+      <span class="project-link">Ver proyecto →</span>
     </a>
 
-    <!-- Mutt -->
     <a href="https://samueldavidhhuhuhhuhuh.github.io/Mutt" target="_blank" class="project-card">
       <div class="project-preview">
         <div class="preview-dots"><span></span><span></span><span></span></div>
         <div style="font-size:2rem;margin-top:1rem;">🐾</div>
       </div>
-      <div class="project-type">Web · Vibe Coding</div>
+      <div class="project-type">Web · Entrega rápida</div>
       <div class="project-title">Mutt</div>
-      <p class="project-desc">Proyecto web desarrollado con vibe coding en tiempo inferior a 2 horas. Demuestra velocidad de entrega y adaptabilidad.</p>
+      <p class="project-desc">Desarrollado en menos de 2 horas. Muestra la velocidad de entrega que puedo ofrecer cuando un cliente lo necesita urgente.</p>
       <div class="project-tags">
         <span class="tag">HTML</span>
         <span class="tag">CSS</span>
         <span class="tag">JS</span>
       </div>
-      <span class="project-link">Ver en GitHub →</span>
+      <span class="project-link">Ver proyecto →</span>
     </a>
 
-    <!-- IoT Project -->
     <div class="project-card" style="cursor:default;">
       <div class="project-preview">
         <div class="preview-dots"><span></span><span></span><span></span></div>
         <div style="font-size:2rem;margin-top:1rem;">📡</div>
       </div>
       <div class="project-type">IoT · Hardware · Cisco</div>
-      <div class="project-title">Sistema Monitoreo & Alerta Temprana IoT</div>
-      <p class="project-desc">Desarrollado en el marco de Cisco Networking Academy (IoT Fundamentals). Red de sensores con ESP32 que transmite datos entre nodos via ondas de radio. Un nodo receptor captura la señal, la enruta por MQTT dentro de Docker y la visualiza en Grafana en tiempo real. Evidencia del desarrollo documentada en correos corporativos.</p>
+      <div class="project-title">Sistema de Monitoreo IoT</div>
+      <p class="project-desc">Red de sensores con ESP32 que transmite datos entre nodos vía radio. El nodo receptor captura la señal, la enruta por MQTT dentro de Docker y la visualiza en Grafana en tiempo real. Desarrollado en Cisco Networking Academy.</p>
       <div class="project-tags">
-        <span class="tag">Cisco</span>
         <span class="tag">ESP32</span>
         <span class="tag">MicroPython</span>
         <span class="tag">MQTT</span>
         <span class="tag">Docker</span>
         <span class="tag">Grafana</span>
-        <span class="tag">LoRa/Radio</span>
       </div>
     </div>
 
@@ -1133,10 +1198,10 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-label">Tecnologías</div>
-  <h2 class="section-title">Stack & Habilidades</h2>
+  <h2 class="section-title">Stack</h2>
   <div class="skills-layout">
     <div>
-      <div class="skill-group-title">Lenguajes & Frameworks</div>
+      <div class="skill-group-title">Lenguajes &amp; Frameworks</div>
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Python / MicroPython</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>JavaScript / TypeScript</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>React · Vite</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
@@ -1144,7 +1209,7 @@
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Java · C#</span><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
     </div>
     <div>
-      <div class="skill-group-title">Bases de Datos & Infraestructura</div>
+      <div class="skill-group-title">Bases de Datos &amp; Infra</div>
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>SQL · MySQL · PostgreSQL</span><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>MongoDB (NoSQL)</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Supabase · Firebase</span><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
@@ -1152,7 +1217,7 @@
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>WordPress</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
     </div>
     <div>
-      <div class="skill-group-title">IoT & Hardware</div>
+      <div class="skill-group-title">IoT &amp; Hardware</div>
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>ESP32 · Arduino</span><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Sensores · Redes de radio</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Grafana · Monitoreo</span><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div></div>
@@ -1160,9 +1225,9 @@
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Linux · CLI</span><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
     </div>
     <div>
-      <div class="skill-group-title">IA, Automatización & Metodologías</div>
+      <div class="skill-group-title">IA, Automatización &amp; Metodologías</div>
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>n8n · Automatizaciones</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
-      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>IA / Vibe Coding</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+      <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>IA / Integración Ollama</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Análisis funcional · UML</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
       <div class="skill-item"><span class="skill-name"><span class="skill-dot"></span>Scrum · Agile</span><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
     </div>
@@ -1174,21 +1239,19 @@
 <!-- EXPERIENCIA -->
 <section id="experiencia">
   <div class="section-label">Historial</div>
-  <h2 class="section-title">Experiencia Laboral</h2>
+  <h2 class="section-title">Experiencia</h2>
   <div class="exp-timeline">
 
     <div class="exp-item">
       <div class="exp-period">ENE 2026 — ACTUALIDAD</div>
-      <div class="exp-role">Asistente Técnico / Dev. de Automatización e Integraciones</div>
+      <div class="exp-role">Desarrollo de Automatizaciones e Integraciones</div>
       <div class="exp-company">Developer Zeta · Bogotá, Colombia</div>
       <ul class="exp-list">
-        <li>Optimicé procesos operativos mediante automatizaciones inteligentes con n8n, reduciendo tareas manuales y mejorando tiempos de respuesta.</li>
-        <li>Desarrollo y despliegue de páginas web dinámicas con integración a bases de datos.</li>
-        <li>Implementación de soluciones de Inteligencia Artificial mediante integración con Ollama en entornos de automatización (n8n).</li>
-        <li>Implementé integraciones entre IoT, bases de datos y sistemas de IA para soluciones escalables.</li>
-        <li>Desarrollo de bots para automatización de tareas y comunicación digital.</li>
-        <li>Apoyo en negociación y gestión con clientes y aliados estratégicos.</li>
-        <li>Labores de campo: instalación, configuración y soporte técnico de soluciones tecnológicas.</li>
+        <li>Reduje carga operativa mediante automatizaciones con n8n + Ollama para procesos internos y de cliente.</li>
+        <li>Desarrollo y despliegue de sitios web dinámicos con integración a bases de datos en producción.</li>
+        <li>Integración de IoT, bases de datos y sistemas de IA en soluciones escalables para clientes.</li>
+        <li>Construcción de bots para automatización de tareas repetitivas y comunicación digital.</li>
+        <li>Instalación, configuración y soporte técnico presencial en sitio.</li>
       </ul>
     </div>
 
@@ -1199,9 +1262,8 @@
       <ul class="exp-list">
         <li>Diseño y optimización de bases de datos relacionales (SQL, MySQL) para grandes volúmenes de información.</li>
         <li>Administración de MongoDB para estructuras flexibles y aplicaciones en tiempo real.</li>
-        <li>Creación de consultas complejas, procedimientos almacenados y reportes.</li>
-        <li>Integración de bases de datos relacionales y no relacionales según requerimientos del proyecto.</li>
-        <li>Pruebas unitarias, de integración y funcionales para asegurar calidad del código.</li>
+        <li>Consultas complejas, procedimientos almacenados y reportes analíticos.</li>
+        <li>Integración de bases relacionales y no relacionales según el requerimiento del proyecto.</li>
       </ul>
     </div>
 
@@ -1212,9 +1274,7 @@
       <ul class="exp-list">
         <li>Levantamiento de requerimientos con usuarios, clientes y stakeholders.</li>
         <li>Elaboración de casos de uso, diagramas UML, historias de usuario y especificaciones funcionales.</li>
-        <li>Definición de arquitectura funcional y propuesta de soluciones tecnológicas viables.</li>
         <li>Enlace entre equipo técnico, usuarios finales y negocio.</li>
-        <li>Gestión de control de cambios durante el ciclo de vida del proyecto.</li>
         <li>Validación de software y análisis de mejora de procesos existentes.</li>
       </ul>
     </div>
@@ -1227,158 +1287,93 @@
 <!-- CERTIFICACIONES -->
 <section id="certificaciones">
   <div class="section-label">Formación</div>
-  <h2 class="section-title">Educación & Certificaciones</h2>
+  <h2 class="section-title">Educación &amp; Certificaciones</h2>
   <p style="font-family:var(--mono);font-size:0.72rem;color:var(--muted);margin-bottom:2rem;">Pasa el cursor sobre cada tarjeta para ver la evidencia del certificado.</p>
   <div class="certs-grid">
 
- 
-    <div class="cert-card"
-         data-pdf="docs/jala-university.pdf"
-         data-preview=""
-         data-label="Jala University — Ingeniería de Software">
+    <div class="cert-card" data-pdf="docs/jala-university.pdf" data-preview="" data-label="Jala University — Ingeniería de Software">
       <span class="cert-eye-icon">👁 ver</span>
       <div class="cert-org">Jala University</div>
       <div class="cert-name">Ing. en Software Comercial — Diseño y Arquitectura</div>
       <div class="cert-note">2024 – 2028 (en curso)</div>
     </div>
 
-    <!-- ✅ CON ARCHIVO → docs/devnet-associate.pdf -->
-    <div class="cert-card"
-         data-pdf="docs/devnet-associate.pdf"
-         data-preview=""
-         data-label="DevNet Associate — Cisco Networking Academy">
+    <div class="cert-card" data-pdf="docs/devnet-associate.pdf" data-preview="" data-label="DevNet Associate — Cisco Networking Academy">
       <span class="cert-eye-icon">👁 ver</span>
       <div class="cert-org">Cisco Networking Academy</div>
       <div class="cert-name">DevNet Associate</div>
       <div class="cert-note">01 Nov 2023 · Nota: 100/100 ★</div>
     </div>
 
-    <!-- ✅ CON ARCHIVO → docs/linux-essentials.pdf -->
-    <div class="cert-card"
-         data-pdf="docs/linux-essentials.pdf"
-         data-preview=""
-         data-label="NDG Linux Essentials — Cisco Networking Academy">
+    <div class="cert-card" data-pdf="docs/linux-essentials.pdf" data-preview="" data-label="NDG Linux Essentials — Cisco Networking Academy">
       <span class="cert-eye-icon">👁 ver</span>
       <div class="cert-org">Cisco Networking Academy</div>
       <div class="cert-name">NDG Linux Essentials</div>
       <div class="cert-note">30 Oct 2023 · Nota: 100/100 ★</div>
     </div>
 
-    <!-- ✅ CON ARCHIVO → docs/linux-unhatched.pdf -->
-    <div class="cert-card"
-         data-pdf="docs/linux-unhatched.pdf"
-         data-preview=""
-         data-label="NDG Linux Unhatched — Cisco Networking Academy">
+    <div class="cert-card" data-pdf="docs/linux-unhatched.pdf" data-preview="" data-label="NDG Linux Unhatched — Cisco Networking Academy">
       <span class="cert-eye-icon">👁 ver</span>
       <div class="cert-org">Cisco Networking Academy</div>
       <div class="cert-name">NDG Linux Unhatched</div>
       <div class="cert-note">08 Feb 2023</div>
     </div>
 
-    <!-- ✅ CON ARCHIVO → docs/python-pcap.pdf -->
-    <div class="cert-card"
-         data-pdf="docs/python-pcap.pdf"
-         data-preview=""
-         data-label="PCAP Python — Cisco Networking Academy">
+    <div class="cert-card" data-pdf="docs/python-pcap.pdf" data-preview="" data-label="PCAP Python — Cisco Networking Academy">
       <span class="cert-eye-icon">👁 ver</span>
       <div class="cert-org">Cisco Networking Academy</div>
       <div class="cert-name">PCAP – Programming Essentials in Python</div>
       <div class="cert-note">31 Oct 2022</div>
     </div>
 
-    <!-- ✅ CON ARCHIVO → docs/iot-fundamentals.pdf -->
-    <div class="cert-card"
-         data-pdf="docs/iot-fundamentals.pdf"
-         data-preview=""
-         data-label="IoT Fundamentals — Cisco Networking Academy">
+    <div class="cert-card" data-pdf="docs/iot-fundamentals.pdf" data-preview="" data-label="IoT Fundamentals — Cisco Networking Academy">
       <span class="cert-eye-icon">👁 ver</span>
       <div class="cert-org">Cisco Networking Academy</div>
       <div class="cert-name">IoT Fundamentals: Connecting Things</div>
       <div class="cert-note">15 Jun 2022 · Proyecto: Ducha inteligente</div>
     </div>
 
-    <!--
-      ✅ CON ARCHIVO → docs/cybersecurity.pdf  (PDF del certificado)
-      ✅ CON IMAGEN  → docs/cybersecurity-intro.png  (Captura_de_pantalla_20260301_215420.png)
-      Módulos adicionales con imagen:
-        docs/cybersecurity-admin.png      ← Captura_de_pantalla_20260301_215325.png
-        docs/cybersecurity-threats.png    ← Captura_de_pantalla_20260301_215331.png
-        docs/cybersecurity-safeguards.png ← Captura_de_pantalla_20260301_215340.png
-        docs/cybersecurity-defense.png    ← Captura_de_pantalla_20260301_215346.png
-        docs/cybersecurity-resources.png  ← Captura_de_pantalla_20260301_215352.png
-    -->
-    <div class="cert-card"
-         data-pdf="docs/cybersecurity.pdf"
-         data-preview="docs/cybersecurity-intro.png"
-         data-label="Introducción a la Ciberseguridad — Cisco / Sec. Educación CR">
+    <div class="cert-card" data-pdf="docs/cybersecurity.pdf" data-preview="docs/cybersecurity-intro.png" data-label="Introducción a la Ciberseguridad — Cisco / Sec. Educación CR">
       <span class="cert-eye-icon">👁 ver</span>
       <div class="cert-org">Cisco · Sec. Educación Costa Rica</div>
       <div class="cert-name">Introducción a la Ciberseguridad</div>
       <div class="cert-note">15 Jul 2022 · 5 módulos completados</div>
     </div>
 
-    <!--
-      ✅ CON IMAGEN → docs/data-analytics-portfolio.png  (Captura_de_pantalla_20260301_215529.png)
-      ✅ CON IMAGEN → docs/data-analytics-gathering.png  (Captura_de_pantalla_20260301_215534.png)
-      ⚠️ SIN PDF   → Si Cisco te generó certificado PDF guárdalo como: docs/data-analytics.pdf
-    -->
-    <div class="cert-card"
-         data-pdf="docs/data-analytics.png"
-         data-preview="docs/data-analytics-portfolio.png"
-         data-label="Data Analytics Essentials — Cisco Networking Academy">
+    <div class="cert-card" data-pdf="docs/data-analytics.png" data-preview="docs/data-analytics-portfolio.png" data-label="Data Analytics Essentials — Cisco Networking Academy">
       <span class="cert-eye-icon">👁 ver</span>
       <div class="cert-org">Cisco Networking Academy</div>
       <div class="cert-name">Data Analytics Essentials</div>
-      <div class="cert-note">Sept 2024 · 30 hrs · Módulos: Portfolio · Data Gathering</div>
+      <div class="cert-note">Sept 2024 · 30 hrs</div>
     </div>
 
-    <!-- ⚠️ SIN ARCHIVO → Sube tu certificado de Rosario como: docs/rosario-gestion.pdf -->
-    <div class="cert-card"
-         data-pdf="docs/rosario-gestion.pdf"
-         data-preview=""
-         data-label="Gestión del Tiempo TI — Universidad del Rosario">
+    <div class="cert-card" data-pdf="docs/rosario-gestion.pdf" data-preview="" data-label="Gestión del Tiempo TI — Universidad del Rosario">
       <span class="cert-eye-icon">👁 ver</span>
       <div class="cert-org">Universidad del Rosario</div>
       <div class="cert-name">Gestión del Tiempo y Perfil en el Sector TI</div>
       <div class="cert-note">2022</div>
     </div>
 
-    <div class="cert-card"
-         data-pdf="docs/jovenes-creativos.pdf"
-         data-preview=""
-         data-label="JavaScript, CSS y HTML — Jóvenes Creativos">
+    <div class="cert-card" data-pdf="docs/jovenes-creativos.pdf" data-preview="" data-label="JavaScript, CSS y HTML — Jóvenes Creativos">
       <span class="cert-eye-icon">👁 ver</span>
       <div class="cert-org">Jóvenes Creativos</div>
       <div class="cert-name">JavaScript, CSS y HTML — Beca completa</div>
       <div class="cert-note">06 Dic 2023</div>
     </div>
 
-    <!--
-      ✅ CON IMAGEN → docs/stem-olimpiadas.png
-      Renombrar: 1772420300414_Captura_de_pantalla_20260301_214948.png → docs/stem-olimpiadas.png
-    -->
-    <div class="cert-card"
-         data-pdf=""
-         data-preview="docs/stem-olimpiadas.png"
-         data-label="Finalista Olimpiadas STEM — Bogotá D.C.">
+    <div class="cert-card" data-pdf="" data-preview="docs/stem-olimpiadas.png" data-label="Finalista Olimpiadas STEM — Bogotá D.C.">
       <span class="cert-eye-icon">👁 ver</span>
       <div class="cert-org">Olimpiadas STEM · Bogotá D.C.</div>
       <div class="cert-name">Finalista Olimpiadas STEM — Puntaje preferente "Jóvenes a la U"</div>
-      <div class="cert-note">Nov 2023 · Colegio Jorge Gaitán Cortes (IED)</div>
+      <div class="cert-note">Nov 2023 · Top 1% ICFES</div>
     </div>
-
-    
 
   </div>
 </section>
 
-<!-- POPUP DE PREVIEW (único, se reutiliza para todas las tarjetas) -->
 <div class="cert-preview-popup" id="certPopup">
   <img src="" alt="Certificado" id="certPopupImg" style="display:none;">
-  <div class="cert-no-preview" id="certPopupNo" style="display:none;">
-    <span>📄</span>
-    Click para abrir el PDF
-  </div>
+  <div class="cert-no-preview" id="certPopupNo" style="display:none;"><span>📄</span>Click para abrir el PDF</div>
   <div class="preview-label" id="certPopupLabel"></div>
 </div>
 
@@ -1386,10 +1381,17 @@
 
 <!-- CONTACTO -->
 <section id="contacto">
-  <div class="section-label">Contacto</div>
-  <h2 class="section-title">Trabajemos Juntos</h2>
+  <div class="section-label">Trabajemos juntos</div>
+  <h2 class="section-title">Contacto</h2>
   <div class="contact-wrapper">
     <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">💬</div>
+        <div>
+          <div class="contact-label">WhatsApp (respuesta rápida)</div>
+          <div class="contact-val"><a href="https://wa.me/573043538450?text=Hola%20Samuel%2C%20vi%20tu%20portafolio%20y%20quiero%20hablar%20de%20un%20proyecto." target="_blank">+57 304 353 8450</a></div>
+        </div>
+      </div>
       <div class="contact-item">
         <div class="contact-icon">📧</div>
         <div>
@@ -1398,17 +1400,103 @@
         </div>
       </div>
       <div class="contact-item">
-        <div class="contact-icon">📱</div>
+        <div class="contact-icon">💼</div>
         <div>
-          <div class="contact-label">WhatsApp / Celular</div>
-          <div class="contact-val"><a href="tel:+573043538450">+57 304 353 8450</a></div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-val"><a href="https://www.linkedin.com/in/samuel-david-rojas-monroy-a6b873264" target="_blank">samuel-david-rojas-monroy</a></div>
         </div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">🐙</div>
         <div>
           <div class="contact-label">GitHub</div>
-          <div class="contact-val"><a href="https://github.com/samueldavidhhuhuhhuhuh" target="_blank">github.com/samueldavidhhuhuhhuhuh</a></div>
+          <div class="contact-val"><a href="https://github.com/Samuel-Rojas-Monroy-Official-Repository" target="_blank">Samuel-Rojas-Monroy-Official-Repository</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Ubicación</div>
+          <div class="contact-val">Bogotá D.C., Colombia · Disponible remoto</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-cta">
+      <p>¿Tienes un proyecto<br>en mente?</p>
+      <small>Cuéntame qué necesitas. Si lo puedo construir, te lo digo directo. Si no, también.</small>
+      <a href="https://wa.me/573043538450?text=Hola%20Samuel%2C%20vi%20tu%20portafolio%20y%20quiero%20hablar%20de%20un%20proyecto." target="_blank" class="btn-primary" style="margin-bottom:0.8rem;display:inline-block;">Escribir por WhatsApp →</a>
+      <br>
+      <a href="mailto:samueldavidvida@gmail.com" class="btn-outline" style="display:inline-block;margin-top:0.5rem;font-size:0.72rem;">o enviar email</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="margin-bottom:0.5rem;">Samuel Rojas · Desarrollo Web · Automatizaciones · IoT · Bogotá, Colombia</div>
+  <div style="color:#374151;">
+    <a href="https://github.com/Samuel-Rojas-Monroy-Official-Repository" target="_blank" style="color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">GitHub</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/samuel-david-rojas-monroy-a6b873264" target="_blank" style="color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a>
+    &nbsp;·&nbsp;
+    <a href="https://wa.me/573043538450" target="_blank" style="color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const popup  = document.getElementById('certPopup');
+  const popImg = document.getElementById('certPopupImg');
+  const popNo  = document.getElementById('certPopupNo');
+  const popLbl = document.getElementById('certPopupLabel');
+  const MARGIN = 16;
+
+  function positionPopup(e) {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const pw = popup.offsetWidth  || 340;
+    const ph = popup.offsetHeight || 260;
+    let x = e.clientX + 24;
+    let y = e.clientY - 20;
+    if (x + pw > vw - MARGIN) x = e.clientX - pw - 24;
+    if (y + ph > vh - MARGIN) y = vh - ph - MARGIN;
+    if (y < MARGIN) y = MARGIN;
+    popup.style.left = x + 'px';
+    popup.style.top  = y + 'px';
+  }
+
+  document.querySelectorAll('.cert-card[data-label]').forEach(card => {
+    const preview = card.dataset.preview || '';
+    const pdf     = card.dataset.pdf     || '';
+    const label   = card.dataset.label   || '';
+    if (!preview && !pdf) return;
+
+    card.addEventListener('mouseenter', function(e) {
+      if (preview) {
+        popImg.src = preview;
+        popImg.style.display = 'block';
+        popNo.style.display  = 'none';
+      } else {
+        popImg.style.display = 'none';
+        popNo.style.display  = 'block';
+      }
+      popLbl.textContent = label || 'Ver certificado';
+      popup.classList.add('active');
+      positionPopup(e);
+    });
+
+    card.addEventListener('mousemove', positionPopup);
+    card.addEventListener('mouseleave', () => popup.classList.remove('active'));
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+      const target = pdf || preview;
+      if (target) window.open(target, '_blank');
+    });
+  });
+})();
+</script>
+</body>
+</html>
         </div>
       </div>
       <div class="contact-item">
