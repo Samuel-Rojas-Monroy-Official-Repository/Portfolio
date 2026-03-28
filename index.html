@@ -1083,7 +1083,7 @@
 
   <div class="projects-grid">
 
-    <a href="https://samueldavidhhuhuhhuhuh.github.io/DeveloperZeta" target="_blank" class="project-card">
+    <a href="https://Samuel-Rojas-Monroy-Official-Repository.github.io/DeveloperZeta" target="_blank" class="project-card">
       <div class="project-preview">
         <div class="preview-dots"><span></span><span></span><span></span></div>
         <div class="project-preview-grid">
@@ -1104,7 +1104,7 @@
       <span class="project-link">Ver proyecto →</span>
     </a>
 
-    <a href="https://samueldavidhhuhuhhuhuh.github.io/Beauty-Project" target="_blank" class="project-card">
+    <a href="https://Samuel-Rojas-Monroy-Official-Repository.github.io/Beauty-Project" target="_blank" class="project-card">
       <div class="project-preview">
         <div class="preview-dots"><span></span><span></span><span></span></div>
         <div class="project-preview-grid">
@@ -1125,7 +1125,7 @@
       <span class="project-link">Ver proyecto →</span>
     </a>
 
-    <a href="https://samueldavidhhuhuhhuhuh.github.io/ZENIT" target="_blank" class="project-card">
+    <a href="https://Samuel-Rojas-Monroy-Official-Repository.github.io/ZENIT" target="_blank" class="project-card">
       <div class="project-preview">
         <div class="preview-dots"><span></span><span></span><span></span></div>
         <div style="font-size:2rem;margin-top:1rem;">🌐</div>
@@ -1141,7 +1141,7 @@
       <span class="project-link">Ver proyecto →</span>
     </a>
 
-    <a href="https://samueldavidhhuhuhhuhuh.github.io/UNIQ" target="_blank" class="project-card">
+    <a href="https://Samuel-Rojas-Monroy-Official-Repository.github.io/UNIQ" target="_blank" class="project-card">
       <div class="project-preview">
         <div class="preview-dots"><span></span><span></span><span></span></div>
         <div style="font-size:2rem;margin-top:1rem;">✨</div>
@@ -1157,7 +1157,7 @@
       <span class="project-link">Ver proyecto →</span>
     </a>
 
-    <a href="https://samueldavidhhuhuhhuhuh.github.io/Mutt" target="_blank" class="project-card">
+    <a href="https://Samuel-Rojas-Monroy-Official-Repository.github.io/Mutt" target="_blank" class="project-card">
       <div class="project-preview">
         <div class="preview-dots"><span></span><span></span><span></span></div>
         <div style="font-size:2rem;margin-top:1rem;">🐾</div>
@@ -1489,90 +1489,6 @@
     card.addEventListener('mouseleave', () => popup.classList.remove('active'));
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => {
-      const target = pdf || preview;
-      if (target) window.open(target, '_blank');
-    });
-  });
-})();
-</script>
-</body>
-</html>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <div>
-          <div class="contact-label">Ubicación</div>
-          <div class="contact-val">Bogotá D.C., Colombia</div>
-        </div>
-      </div>
-    </div>
-    
-
-    <div class="contact-cta">
-      <p>¿Tienes un proyecto<br>en mente?</p>
-      <small>Desde webs hasta IoT, automatizaciones e IA — lo construimos.</small>
-      <a href="https://www.linkedin.com/in/samuel-david-rojas-monroy-a6b873264" class="btn-primary">Enviar mensaje →</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div style="margin-bottom:0.5rem;">Samuel Rojas · Software Developer · Bogotá, Colombia</div>
-  <div style="color:#374151;">Construido con HTML · CSS · JS puro — sin frameworks, sin excusas.</div>
-</footer>
-
-<script>
-(function() {
-  const popup  = document.getElementById('certPopup');
-  const popImg = document.getElementById('certPopupImg');
-  const popNo  = document.getElementById('certPopupNo');
-  const popLbl = document.getElementById('certPopupLabel');
-  const MARGIN = 16;
-
-  function positionPopup(e) {
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    const pw = popup.offsetWidth  || 340;
-    const ph = popup.offsetHeight || 260;
-    let x = e.clientX + 24;
-    let y = e.clientY - 20;
-    if (x + pw > vw - MARGIN) x = e.clientX - pw - 24;
-    if (y + ph > vh - MARGIN) y = vh - ph - MARGIN;
-    if (y < MARGIN) y = MARGIN;
-    popup.style.left = x + 'px';
-    popup.style.top  = y + 'px';
-  }
-
-  document.querySelectorAll('.cert-card[data-label]').forEach(card => {
-    const preview = card.dataset.preview || '';
-    const pdf     = card.dataset.pdf     || '';
-    const label   = card.dataset.label   || '';
-
-    if (!preview && !pdf) return;
-
-    card.addEventListener('mouseenter', function(e) {
-      if (preview) {
-        popImg.src = preview;
-        popImg.style.display = 'block';
-        popNo.style.display  = 'none';
-      } else {
-        popImg.style.display = 'none';
-        popNo.style.display  = 'block';
-      }
-      popLbl.textContent = label || 'Ver certificado';
-      popup.classList.add('active');
-      positionPopup(e);
-    });
-
-    card.addEventListener('mousemove', positionPopup);
-
-    card.addEventListener('mouseleave', function() {
-      popup.classList.remove('active');
-    });
-
-    card.style.cursor = 'pointer';
-    card.addEventListener('click', function() {
       const target = pdf || preview;
       if (target) window.open(target, '_blank');
     });
