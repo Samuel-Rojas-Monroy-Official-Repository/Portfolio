@@ -136,6 +136,11 @@ h2 small{display:block;font-size:.9rem;font-weight:400;color:var(--muted);margin
 .promise ul{margin:0;padding-left:20px}.promise li{margin:8px 0}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 ul.clean{padding-left:20px;margin:8px 0}
+.mini{font-size:.95rem;color:var(--durazno);margin:26px 0 10px;font-weight:600}
+.slides{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.slides .cert img{aspect-ratio:16/9;object-fit:cover}
+.needs{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.needs .card{padding:14px}.needs p{font-size:.84rem;color:var(--muted);margin:6px 0 10px}
 footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
 @media (max-width:760px){
   .timeline{grid-template-columns:1fr}.timeline::before{display:none}
@@ -184,7 +189,7 @@ footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid 
 <section id="plan" class="reveal">
   <div class="sec-head"><span class="n">01</span><h2>Qué se pidió y dónde vamos<small>Plan de onboarding · 10 semanas</small></h2></div>
   <div class="timeline">
-    <div class="phase card"><span class="dot"></span><h3>Sem. 1–2 · Diagnóstico</h3><span class="tag ok">Hecho</span><p>Inventario de plataformas, servidor y repositorio documentado. Los prompts del equipo se reemplazaron por una decisión: la IA se usa de forma centralizada.</p></div>
+    <div class="phase card"><span class="dot"></span><h3>Sem. 1–2 · Diagnóstico</h3><span class="tag ok">Hecho</span><p>Inventario de plataformas, servidor y repositorio documentado. La adopción de IA en el equipo avanza con Valeria como piloto.</p></div>
     <div class="phase card"><span class="dot"></span><h3>Sem. 3–5 · Automatización</h3><span class="tag ok">Hecho y superado</span><p>48 flujos activos: asistencia, Zoom, Q10, oportunidades, avisos y correos.</p></div>
     <div class="phase card"><span class="dot"></span><h3>Sem. 6–8 · Analítica</h3><span class="tag alt">Hecho con otra herramienta</span><p>En lugar de Power BI: base central y un <a href="https://panel-de-datos.vercel.app" target="_blank" rel="noopener">Panel de Datos público</a>, sin licencias.</p></div>
     <div class="phase card now"><span class="dot"></span><h3>Sem. 9–10 · Transferencia</h3><span class="tag run">En curso · diciembre</span><p>53 guías y un panel de diagnóstico. Faltan la capacitación del equipo y el ensayo del servidor de respaldo.</p></div>
@@ -192,15 +197,15 @@ footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid 
   <div class="proj">
     <div class="card"><h3>Gestión de participantes</h3><span class="tag ok">Hecho</span><p>Forms, Sheets, Q10 y Zoom consolidados y un reporte de riesgo. Las alertas automáticas de deserción están pendientes.</p></div>
     <div class="card"><h3>Workspace optimizado</h3><span class="tag ok">Hecho en su mayoría</span><p>Consolidación en Sheets, correos masivos con control de bajas y rebotes y asistencia de Zoom. Las respuestas automáticas en Gmail están pendientes.</p></div>
-    <div class="card"><h3>Atención por WhatsApp</h3><span class="tag wait">Construido · en pausa</span><p>El bot quedó listo; está en pausa porque ManyChat no fue aprobado.</p></div>
+    <div class="card"><h3>Atención por WhatsApp</h3><span class="tag wait">Construido · en pausa</span><p>El bot quedó listo; está en pausa mientras se define la plataforma.</p></div>
     <div class="card"><h3>Difusión y convocatorias</h3><span class="tag run">En curso</span><p>Oportunidades publicadas solas en la web, campañas NOVA y convocatoria de Uruguay. La lectura automática de hojas de vida está pendiente.</p></div>
     <div class="card"><h3>Dashboard de control</h3><span class="tag ok">Hecho</span><p>Panel de diagnóstico con el estado de cada flujo.</p></div>
-    <div class="card"><h3>Archivos y grabaciones</h3><span class="tag wait">Bloqueado</span><p>Diseñado y documentado; espera permisos de administrador.</p></div>
+    <div class="card"><h3>Archivos y grabaciones</h3><span class="tag wait">En espera</span><p>Diseñado y documentado; espera permisos de administrador.</p></div>
   </div>
 </section>
 
 <section id="roles" class="reveal">
-  <div class="sec-head"><span class="n">02</span><h2>Nueve roles en un solo cargo<small>Pasa el mouse (o toca) para ver la captura del salario promedio de cada rol en Colombia</small></h2></div>
+  <div class="sec-head"><span class="n">02</span><h2>Nueve roles en un solo cargo<small>Automatizaciones, datos, paneles y documentación, en coordinación con Cristian (página web de reportes). Pasa el mouse (o toca) para ver la captura del salario promedio de cada rol en Colombia</small></h2></div>
   <div class="roles">
     <div class="role" tabindex="0"><div class="in">
       <div class="face front"><span class="ico">🗄️</span><h3>Ingeniería de datos</h3><p>Más de 7 fuentes (Q10, Zoom, Sheets, Forms, Emoflow, MongoDB e históricos) en una sola base.</p><div class="sal">≈ $3,90 M<small>Payscale · 1–4 años</small></div><div class="hint">Ver evidencia ↻</div></div>
@@ -235,7 +240,7 @@ footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid 
       <div class="face back"><img src="img/roles/devops.jpg" alt="Captura de Indeed: DevOps, $4.096.066 al mes" loading="lazy"><div class="cap">Indeed · DevOps · sep-2026</div></div>
     </div></div>
     <div class="role" tabindex="0"><div class="in">
-      <div class="face front"><span class="ico">🤖</span><h3>Manejo de IA</h3><p>La IA en el trabajo diario de la Fundación: construir, revisar y documentar desde un solo punto de control.</p><div class="sal">$6 – 10 M<small>Datapath · AI Engineer junior, Bogotá</small></div><div class="hint">Ver captura ↻</div></div>
+      <div class="face front"><span class="ico">🤖</span><h3>Manejo de IA</h3><p>Construyo, reviso y documento con IA, y acompaño su adopción en el equipo con Valeria como piloto.</p><div class="sal">$6 – 10 M<small>Datapath · AI Engineer junior, Bogotá</small></div><div class="hint">Ver captura ↻</div></div>
       <div class="face back"><img src="img/roles/ia.jpg" alt="Captura de Datapath: AI Engineer junior en Bogotá, $6M a $10M" loading="lazy"><div class="cap">Datapath · AI Engineer · 2026 (rango junior; Coderhouse: $4,5–6 M)</div></div>
     </div></div>
     <div class="role fde" tabindex="0"><div class="in">
@@ -243,7 +248,7 @@ footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid 
       <div class="face back empty"><div>Uno de los roles de IA de mayor crecimiento.<br><br><a href="https://www.fastcompany.com/91435680/postings-for-this-ai-job-are-up-800" target="_blank" rel="noopener">Fast Company: las ofertas subieron 800 %</a><br><a href="https://www.fortune.com/2026/09/03/forward-deployed-engineers-fast-growing-six-figure-silicon-valley-job-integrate-ai-with-customers-tech-careers-palantir/" target="_blank" rel="noopener">Fortune, sep-2026</a></div></div>
     </div></div>
   </div>
-  <p class="note">Son promedios de todos los niveles en Colombia, excepto Manejo de IA (rango junior) e Ingeniería de datos (1–4 años). El técnico de soporte gana en promedio $1,42 M (Computrabajo): es el único rol que coincide con el cargo contratado.</p>
+  <p class="note">Son promedios de todos los niveles en Colombia, excepto Manejo de IA (rango junior) e Ingeniería de datos (1–4 años). El técnico de soporte gana en promedio $1,42 M (Computrabajo): es el rol más cercano al cargo contratado.</p>
 </section>
 
 <section id="alertas" class="reveal">
@@ -291,15 +296,29 @@ footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid 
 </section>
 
 <section id="org" class="reveal">
-  <div class="sec-head"><span class="n">05</span><h2>Cómo se organizó el trabajo<small>Autoorganización e IA</small></h2></div>
+  <div class="sec-head"><span class="n">05</span><h2>Cómo se organizó el trabajo<small>Vista rápida del plan recibido y de cómo se llevó a la práctica</small></h2></div>
   <div class="two">
-    <div class="card"><p>El plan de onboarding fijaba metas y porcentajes esperados (−85 % de horas, 95 % de asertividad, 100 % de adopción de IA), pero no traía línea base, arquitectura, herramientas, accesos ni presupuesto. Era una guía de qué lograr, no de cómo hacerlo.</p><p>Diseñé esa parte técnica por mi cuenta.</p></div>
+    <div class="card"><p>El plan de onboarding y el documento de necesidades de la Fundación definían con claridad los objetivos. La parte técnica de cómo lograrlos (arquitectura, herramientas y accesos) la fui diseñando y organizando por mi cuenta, sin una guía técnica ni alguien que revisara el desarrollo.</p>
+      <p>Trabajo en coordinación con <b>Cristian</b>, que desarrolló la página web (front-end y back-end) que facilita la entrega de reportes y la captación de información. Las automatizaciones, la base de datos, los paneles y la documentación van por mi cuenta.</p></div>
     <div class="card"><ul class="clean">
       <li><b>Arquitectura propia</b>, sin costo de licencias.</li>
       <li><b>Trazabilidad:</b> cada tarea en Linear, cada cambio en Git y cada decisión escrita.</li>
       <li><b>Recuperación:</b> cada alerta apunta a su guía.</li>
-      <li><b>IA como multiplicador:</b> asistentes de programación con IA para construir, revisar y documentar, con revisión antes de llevar algo a producción.</li>
+      <li><b>IA como multiplicador:</b> asistentes de programación con IA para construir, revisar y documentar, siempre revisando antes de llevar algo a producción.</li>
+      <li><b>Adopción de IA en el equipo:</b> principalmente con <b>Valeria</b>, que será la piloto: una persona ajena al desarrollo con quien afinaremos las herramientas antes de llevarlas al resto del equipo.</li>
     </ul></div>
+  </div>
+  <h3 class="mini">El plan de onboarding · pasa el mouse para verlo, clic para ampliar</h3>
+  <div class="slides"><a class="cert slide" href="img/plan/onboarding-01.jpg" data-img="img/plan/onboarding-01.jpg"><img src="img/plan/onboarding-01.jpg" alt="Diapositiva 1 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-02.jpg" data-img="img/plan/onboarding-02.jpg"><img src="img/plan/onboarding-02.jpg" alt="Diapositiva 2 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-03.jpg" data-img="img/plan/onboarding-03.jpg"><img src="img/plan/onboarding-03.jpg" alt="Diapositiva 3 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-04.jpg" data-img="img/plan/onboarding-04.jpg"><img src="img/plan/onboarding-04.jpg" alt="Diapositiva 4 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-05.jpg" data-img="img/plan/onboarding-05.jpg"><img src="img/plan/onboarding-05.jpg" alt="Diapositiva 5 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-06.jpg" data-img="img/plan/onboarding-06.jpg"><img src="img/plan/onboarding-06.jpg" alt="Diapositiva 6 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-07.jpg" data-img="img/plan/onboarding-07.jpg"><img src="img/plan/onboarding-07.jpg" alt="Diapositiva 7 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-08.jpg" data-img="img/plan/onboarding-08.jpg"><img src="img/plan/onboarding-08.jpg" alt="Diapositiva 8 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-09.jpg" data-img="img/plan/onboarding-09.jpg"><img src="img/plan/onboarding-09.jpg" alt="Diapositiva 9 del plan de onboarding" loading="lazy"></a></div>
+  <h3 class="mini">Documento «Necesidades de la Fundación en IA y automatización» · resumen</h3>
+  <div class="needs">
+    <div class="card"><b>Participantes y programas</b><p>Cohortes, asistencia, consolidación en tiempo real, indicadores y alertas.</p><span class="tag ok">Hecho en su mayoría</span></div>
+    <div class="card"><b>Convocatorias y selección</b><p>Lectura de hojas de vida, ranking, entrevistas y correos automáticos.</p><span class="tag run">Por hacer</span></div>
+    <div class="card"><b>Asistentes virtuales</b><p>Página web, plataformas de formación y WhatsApp.</p><span class="tag wait">WhatsApp construido · en pausa</span></div>
+    <div class="card"><b>Comunicación y difusión</b><p>Campañas, correos masivos y segmentación.</p><span class="tag ok">Correos y campañas listos</span></div>
+    <div class="card"><b>Información institucional</b><p>Organización de archivos y búsqueda inteligente.</p><span class="tag wait">En espera de permisos</span></div>
+    <div class="card"><b>Google Workspace</b><p>Gmail, Sheets, Drive, Calendar y Zoom.</p><span class="tag ok">Sheets y Zoom listos</span></div>
+    <div class="card"><b>Analítica</b><p>Dashboards, indicadores y reportes en tiempo real.</p><span class="tag ok">Panel de Datos público</span></div>
   </div>
 </section>
 
@@ -309,15 +328,15 @@ footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid 
     <li>Con el medio tiempo y las automatizaciones de n8n, las labores de soporte se cumplen con <b>más precisión que a mano</b>: los flujos corren a la hora exacta, no olvidan y avisan si algo falla.</li>
     <li><b>Me comprometo</b> a que las plataformas de la Fundación queden actualizadas y a que ninguna necesidad quede desatendida.</li>
     <li>Tengo un <b>plan de acción estructurado</b> sobre hacia dónde dirigir el esfuerzo, con prioridades y tareas registradas.</li>
-    <li>No hace falta <b>contratar a alguien que me reemplace</b> en estas labores.</li>
+    <li>No sería necesario <b>contratar a alguien que me reemplace</b> en estas labores.</li>
     <li>Si la Dirección lo prefiere, puedo tomar las clases <b>desde la oficina</b>. Así detecto cualquier necesidad en el momento: si es breve, la resuelvo ahí mismo; si no, la atiendo en mi jornada.</li>
   </ul></div>
 </section>
 
 <section id="fde" class="reveal">
-  <div class="sec-head"><span class="n">07</span><h2>Rol FDE (opcional)<small>Requiere una conversación aparte</small></h2></div>
+  <div class="sec-head"><span class="n">07</span><h2>Rol FDE (opcional)<small>Una idea para conversar más adelante, sin ninguna prisa</small></h2></div>
   <div class="two">
-    <div class="card"><p>El <b>Forward Deployed Engineer</b> lleva soluciones de automatización e IA a otras organizaciones, adaptadas a cada cliente. Es uno de los roles de mayor crecimiento del mercado tecnológico: las ofertas subieron más de 800 % en 2025, según datos de Indeed citados por el Financial Times.</p>
+    <div class="card"><p>Solo como idea para más adelante, cuando sea un buen momento. El <b>Forward Deployed Engineer</b> lleva soluciones de automatización e IA a otras organizaciones, adaptadas a cada cliente. Es uno de los roles de mayor crecimiento del mercado tecnológico: las ofertas subieron más de 800 % en 2025, según datos de Indeed citados por el Financial Times.</p>
       <p class="note">Lecturas: <a href="https://www.fastcompany.com/91435680/postings-for-this-ai-job-are-up-800" target="_blank" rel="noopener">Fast Company</a> · <a href="https://www.fortune.com/2026/09/03/forward-deployed-engineers-fast-growing-six-figure-silicon-valley-job-integrate-ai-with-customers-tech-careers-palantir/" target="_blank" rel="noopener">Fortune</a> · <a href="https://www.computerworld.com/article/4171867/heres-one-career-emerging-from-the-ai-shift-forward-deployed-engineers.html" target="_blank" rel="noopener">Computerworld</a></p></div>
     <div class="card promise"><p><b>No le resta al soporte.</b> Si hay trabajo de FDE, lo que se aplaza son las entregas de desarrollo, nunca el soporte. El soporte está cubierto con FDE o sin él; doy mi palabra.</p></div>
   </div>
@@ -356,7 +375,7 @@ footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid 
   draw();
 
   /* --- texto que se escribe --- */
-  var lines = ['Automatización · Datos · Nube · IA', 'Contratado para soporte, ejerciendo nueve roles', 'Soporte cubierto con o sin FDE'];
+  var lines = ['Automatización · Datos · Nube · IA', 'Contratado para soporte, ejerciendo nueve roles', 'El soporte siempre queda cubierto'];
   var t = document.getElementById('type'), li = 0, ch = 0, del = false;
   function tick(){
     var s = lines[li];
