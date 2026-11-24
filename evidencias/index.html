@@ -5,186 +5,423 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Evidencias · Samuel Rojas</title>
+<link rel="icon" href="img/jc-logo.png">
 <style>
 :root{
-  --bg:#f6f7f9; --card:#ffffff; --ink:#1b2430; --muted:#5b6675; --line:#e2e6ec;
-  --brand:#406C9E; --brand-soft:#e8eff7;
-  --ok:#1f7a4d; --ok-bg:#e3f4ea; --alt:#2f5f93; --alt-bg:#e5eef8;
-  --run:#8a5a00; --run-bg:#fbf0d6; --wait:#6b4d9a; --wait-bg:#efe8f8;
-  --todo:#7a7f87; --todo-bg:#eef0f3;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#11161d; --card:#18202a; --ink:#e7ecf2; --muted:#a3adba; --line:#2a3542;
-    --brand:#8db4e0; --brand-soft:#1d2b3b;
-    --ok:#7fd3a5; --ok-bg:#163126; --alt:#9cc2ee; --alt-bg:#18293d;
-    --run:#f0c46a; --run-bg:#352a12; --wait:#c4a8ee; --wait-bg:#2a2238;
-    --todo:#b3b9c2; --todo-bg:#232b35;
-  }
+  --naranja:#F7972B; --marino:#0C175D; --durazno:#F6C486; --negro:#000;
+  --bg:#070d38; --panel:rgba(255,255,255,.045); --panel-2:rgba(255,255,255,.08);
+  --line:rgba(246,196,134,.18); --ink:#f4f6ff; --muted:#b9bfdc;
+  --ok:#5fd39a; --alt:#83b6dd; --run:#F6C486; --wait:#c9a7ff; --todo:#9aa1bf;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Century Gothic","Segoe UI",system-ui,sans-serif}
-.wrap{max-width:860px;margin:0 auto;padding:32px 16px 64px}
-header h1{font-size:1.6rem;margin:0 0 4px}
-header p{margin:0;color:var(--muted)}
-.lead{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:16px 18px;margin:22px 0}
-.lead p{margin:.3em 0}
-.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:18px 0 6px}
-.num{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
-.num b{display:block;font-size:1.5rem;color:var(--brand)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'Gilroy','Century Gothic','URW Gothic','Avant Garde',system-ui,sans-serif;overflow-x:hidden}
+#fx{position:fixed;inset:0;z-index:0;pointer-events:none}
+.grid-floor{position:fixed;inset:auto 0 0 0;height:45vh;z-index:0;pointer-events:none;
+  background:linear-gradient(transparent 0,rgba(247,151,43,.10) 100%),
+  repeating-linear-gradient(90deg,rgba(247,151,43,.16) 0 1px,transparent 1px 70px),
+  repeating-linear-gradient(0deg,rgba(247,151,43,.16) 0 1px,transparent 1px 70px);
+  transform:perspective(500px) rotateX(62deg);transform-origin:bottom;mask-image:linear-gradient(transparent,#000 70%);
+  animation:floor 6s linear infinite}
+@keyframes floor{to{background-position:0 0,0 0,0 70px}}
+main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 16px 80px}
+a{color:var(--naranja)}
+/* ---------- hero ---------- */
+.hero{min-height:min(88vh,820px);display:grid;align-content:center;gap:22px;padding:56px 0 30px}
+.badge{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.logo-plate{background:#fff;border-radius:18px;padding:10px 14px;box-shadow:0 0 0 1px rgba(255,255,255,.4),0 0 40px rgba(247,151,43,.35);animation:pulse 4s ease-in-out infinite}
+.logo-plate img{display:block;height:74px;width:auto}
+@keyframes pulse{50%{box-shadow:0 0 0 1px rgba(255,255,255,.4),0 0 70px rgba(247,151,43,.6)}}
+.kicker{font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;color:var(--durazno)}
+h1{font-size:clamp(2.1rem,6vw,4.2rem);line-height:1.05;margin:0;font-weight:800}
+h1 .glow{color:var(--naranja);text-shadow:0 0 24px rgba(247,151,43,.55)}
+.type{font-size:clamp(1.05rem,2.4vw,1.35rem);color:var(--muted);min-height:2.2em}
+.type::after{content:"▍";color:var(--naranja);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{max-width:760px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--naranja);border-radius:14px;padding:16px 18px;backdrop-filter:blur(6px)}
+.lead p{margin:.35em 0}
+nav.chips{display:flex;flex-wrap:wrap;gap:8px}
+nav.chips a{font-size:.85rem;text-decoration:none;color:var(--ink);border:1px solid var(--line);padding:6px 12px;border-radius:999px;background:var(--panel);transition:.25s}
+nav.chips a:hover{border-color:var(--naranja);box-shadow:0 0 18px rgba(247,151,43,.45);color:var(--naranja)}
+/* ---------- counters ---------- */
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:6px 0}
+.num{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;overflow:hidden}
+.num::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(247,151,43,.18) 50%,transparent 70%);transform:translateX(-100%);animation:sweep 5s ease-in-out infinite}
+.num:nth-child(2)::before{animation-delay:.6s}.num:nth-child(3)::before{animation-delay:1.2s}.num:nth-child(4)::before{animation-delay:1.8s}.num:nth-child(5)::before{animation-delay:2.4s}.num:nth-child(6)::before{animation-delay:3s}
+@keyframes sweep{60%,100%{transform:translateX(100%)}}
+.num b{display:block;font-size:2rem;font-weight:800;color:var(--naranja);font-variant-numeric:tabular-nums}
 .num span{font-size:.85rem;color:var(--muted)}
-details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:12px 0;overflow:hidden}
-summary{cursor:pointer;padding:14px 18px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--brand);font-size:1.2rem;line-height:1}
-details[open] summary::after{content:"–"}
-summary small{font-weight:400;color:var(--muted)}
-.in{padding:0 18px 16px;border-top:1px solid var(--line)}
-.in h3{font-size:1rem;margin:16px 0 6px}
-ul{padding-left:20px;margin:6px 0}
-li{margin:4px 0}
-table{width:100%;border-collapse:collapse;font-size:.92rem;margin:10px 0}
-th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
-th{color:var(--muted);font-weight:600}
-.tag{display:inline-block;font-size:.78rem;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
-.ok{color:var(--ok);background:var(--ok-bg)} .alt{color:var(--alt);background:var(--alt-bg)}
-.run{color:var(--run);background:var(--run-bg)} .wait{color:var(--wait);background:var(--wait-bg)}
-.todo{color:var(--todo);background:var(--todo-bg)}
-a{color:var(--brand)}
-.cert{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
-.cert:last-child{border-bottom:0}
-.cert span{color:var(--muted);font-size:.9rem;white-space:nowrap}
-.note{font-size:.88rem;color:var(--muted)}
-.promise{border-left:4px solid var(--ok)}
-footer{margin-top:28px;font-size:.85rem;color:var(--muted)}
-@media (max-width:560px){ .cert{flex-direction:column;gap:2px} th:nth-child(3),td:nth-child(3){display:none} }
-@media print{ details{break-inside:avoid} details:not([open]) .in{display:block} summary::after{content:""} }
+.note{font-size:.85rem;color:var(--muted)}
+/* ---------- sections ---------- */
+section{margin-top:84px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+.sec-head .n{font-size:.8rem;color:var(--marino);background:var(--naranja);font-weight:800;border-radius:8px;padding:3px 9px}
+h2{font-size:clamp(1.4rem,3.2vw,2rem);margin:0;font-weight:800}
+h2 small{display:block;font-size:.9rem;font-weight:400;color:var(--muted);margin-top:4px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.on{opacity:1;transform:none}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;backdrop-filter:blur(6px)}
+/* plan */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative}
+.timeline::before{content:"";position:absolute;left:0;right:0;top:22px;height:2px;background:linear-gradient(90deg,var(--naranja) 0 80%,rgba(255,255,255,.15) 80%)}
+.phase{position:relative;padding-top:46px}
+.phase .dot{position:absolute;top:13px;left:12px;width:20px;height:20px;border-radius:50%;background:var(--naranja);box-shadow:0 0 0 6px rgba(247,151,43,.2),0 0 20px var(--naranja)}
+.phase.now .dot{background:var(--durazno);animation:ping 1.6s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(246,196,134,.7)}100%{box-shadow:0 0 0 16px rgba(246,196,134,0)}}
+.phase h3{font-size:.98rem;margin:0 0 6px}
+.phase p{font-size:.88rem;color:var(--muted);margin:6px 0 0}
+.tag{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.04em;padding:3px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.ok{color:var(--ok)} .alt{color:var(--alt)} .run{color:var(--run)} .wait{color:var(--wait)} .todo{color:var(--todo)}
+.proj{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:16px}
+.proj .card h3{font-size:1rem;margin:0 0 8px}
+.proj .card p{margin:8px 0 0;font-size:.9rem;color:var(--muted)}
+/* roles */
+.roles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.role{perspective:1000px;height:280px;cursor:pointer;outline:none}
+.role .in{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.role:hover .in,.role:focus .in,.role.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;border:1px solid var(--line);background:var(--panel);padding:16px;display:flex;flex-direction:column;overflow:hidden}
+.face.front::after{content:"";position:absolute;inset:-1px;border-radius:16px;padding:1px;background:linear-gradient(140deg,var(--naranja),transparent 40%,transparent 60%,var(--durazno));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.55}
+.face h3{font-size:1.02rem;margin:4px 0 8px}
+.face p{font-size:.86rem;color:var(--muted);margin:0}
+.ico{font-size:1.6rem}
+.sal{margin-top:auto;font-weight:800;color:var(--naranja);font-size:1.15rem}
+.sal small{display:block;font-weight:400;color:var(--muted);font-size:.75rem}
+.hint{font-size:.7rem;color:var(--durazno);letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
+.face.back{transform:rotateY(180deg);padding:0;background:#fff}
+.face.back img{width:100%;height:100%;object-fit:cover;object-position:top left}
+.face.back .cap{position:absolute;left:0;right:0;bottom:0;background:rgba(12,23,93,.92);color:#fff;font-size:.78rem;padding:8px 10px}
+.face.back.empty{background:var(--panel-2);color:var(--muted);display:grid;place-items:center;padding:18px;text-align:center;font-size:.9rem}
+.role.fde .face.front{border-style:dashed}
+/* telegram */
+.tg{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:22px;align-items:center}
+.phone{background:#0e1621;border-radius:28px;padding:14px;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 50px rgba(247,151,43,.18)}
+.phone .bar{display:flex;align-items:center;gap:10px;padding:6px 8px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.phone .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--naranja),var(--durazno));display:grid;place-items:center;color:var(--marino);font-weight:800}
+.phone .bar small{display:block;color:#7f91a4;font-size:.72rem}
+.chat{min-height:230px;padding:14px 4px;display:flex;flex-direction:column;gap:10px}
+.msg{background:#182533;border-radius:14px 14px 14px 4px;padding:10px 12px;font-size:.86rem;max-width:95%;opacity:0;transform:translateY(10px);transition:.5s}
+.msg.on{opacity:1;transform:none}
+.msg code{font-family:ui-monospace,Consolas,monospace;font-size:.82rem}
+.rb{display:inline-block;margin-top:6px;background:rgba(247,151,43,.16);border:1px solid var(--naranja);color:var(--naranja);border-radius:8px;padding:3px 8px;box-shadow:0 0 16px rgba(247,151,43,.45);animation:pulse2 2.2s ease-in-out infinite}
+@keyframes pulse2{50%{box-shadow:0 0 30px rgba(247,151,43,.8)}}
+.typing{display:inline-flex;gap:4px;padding:10px 12px;background:#182533;border-radius:14px;width:max-content}
+.typing i{width:6px;height:6px;border-radius:50%;background:#7f91a4;animation:bounce 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bounce{50%{transform:translateY(-5px)}}
+.steps{counter-reset:s;display:grid;gap:10px}
+.steps div{counter-increment:s;position:relative;padding:12px 14px 12px 52px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.steps div::before{content:counter(s);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:8px;background:var(--naranja);color:var(--marino);font-weight:800;display:grid;place-items:center}
+.steps b{color:var(--durazno)}
+/* certs */
+.certs{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.cert{position:relative;display:block;text-decoration:none;color:var(--ink);border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--panel);cursor:zoom-in;transition:transform .3s,box-shadow .3s}
+.cert:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(247,151,43,.3);border-color:var(--naranja)}
+.cert img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top;background:#fff;filter:saturate(.9)}
+.cert div{padding:10px 12px}
+.cert b{display:block;font-size:.86rem;line-height:1.3}
+.cert span{font-size:.75rem;color:var(--muted)}
+#peek{position:fixed;z-index:50;width:min(460px,42vw);pointer-events:none;border-radius:14px;overflow:hidden;border:2px solid var(--naranja);box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 40px rgba(247,151,43,.4);background:#fff;opacity:0;transform:scale(.96);transition:opacity .18s,transform .18s}
+#peek.on{opacity:1;transform:none}
+#peek img{display:block;width:100%}
+#lb{position:fixed;inset:0;z-index:60;background:rgba(4,8,30,.88);display:none;place-items:center;padding:16px;cursor:zoom-out}
+#lb.on{display:grid}
+#lb img{max-width:100%;max-height:86vh;border-radius:12px;background:#fff}
+#lb a{display:block;text-align:center;margin-top:10px}
+.skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.skills span{font-size:.82rem;border:1px solid var(--line);border-radius:999px;padding:5px 11px;background:var(--panel)}
+.skills span.hot{border-color:var(--naranja);color:var(--naranja)}
+/* promise */
+.promise{border:1px solid var(--naranja);background:linear-gradient(135deg,rgba(247,151,43,.12),rgba(12,23,93,.4));box-shadow:0 0 60px rgba(247,151,43,.15)}
+.promise ul{margin:0;padding-left:20px}.promise li{margin:8px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+ul.clean{padding-left:20px;margin:8px 0}
+footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:760px){
+  .timeline{grid-template-columns:1fr}.timeline::before{display:none}
+  .tag{white-space:normal}
+  .tg,.two{grid-template-columns:1fr}
+  #peek{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <h1>Samuel David Rojas Monroy</h1>
-  <p>Evidencias de trabajo y formación · Asistente de Soporte Técnico, Fundación ROFÉ – Toca una Vida · Corte: 24 de noviembre de 2026</p>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="grid-floor" aria-hidden="true"></div>
+<div id="peek" aria-hidden="true"><img alt=""></div>
+<div id="lb" role="dialog" aria-label="Vista ampliada"><div><img alt=""><a target="_blank" rel="noopener">Abrir el original ↗</a></div></div>
+
+<main>
+<header class="hero">
+  <div class="badge">
+    <div class="logo-plate"><img src="img/jc-logo.png" alt="Jóvenes creaTIvos"></div>
+    <div class="kicker">Fundación ROFÉ – Toca una Vida · Evidencias · Corte 24-nov-2026</div>
+  </div>
+  <h1>Samuel David Rojas Monroy<br><span class="glow">la ingeniería detrás del soporte</span></h1>
+  <div class="type" id="type" aria-live="polite"></div>
+  <div class="lead">
+    <p><b>En breve.</b> En junio de 2026 recibí un plan de 10 semanas para convertir el soporte en un «catalizador digital». A noviembre, la automatización y la integración de datos están hechas y superadas, y la transferencia al equipo termina en diciembre.</p>
+    <p>Pasa el mouse sobre cada rol para ver el salario de mercado y sobre cada certificado para verlo completo, sin descargar nada.</p>
+  </div>
+  <nav class="chips" aria-label="Secciones">
+    <a href="#plan">1 · Plan y avance</a><a href="#roles">2 · Roles y salarios</a><a href="#alertas">3 · Alertas y guías</a><a href="#certs">4 · Certificados</a><a href="#org">5 · Cómo se organizó</a><a href="#compromiso">6 · Compromiso</a><a href="#fde">7 · FDE</a>
+  </nav>
+  <div class="nums">
+    <div class="num"><b data-to="48">0</b><span>automatizaciones activas</span></div>
+    <div class="num"><b data-to="390">0</b><span>scripts de Python</span></div>
+    <div class="num"><b data-to="53">0</b><span>guías de recuperación</span></div>
+    <div class="num"><b data-to="1150">0</b><span>cambios versionados</span></div>
+    <div class="num"><b data-to="225" data-suf="+">0</b><span>tareas en Linear</span></div>
+    <div class="num"><b data-to="94000" data-pre="~">0</b><span>registros centralizados</span></div>
+  </div>
+  <p class="note">Cifras del repositorio y del servidor n8n, corte 13-nov-2026. Sin datos personales de participantes.</p>
 </header>
 
-<div class="lead">
-  <p><b>En breve.</b> En junio de 2026 recibí un plan de 10 semanas para convertir el soporte en un «catalizador digital». A noviembre, las fases de automatización e integración de datos están hechas y superadas. La transferencia al equipo está en curso y termina en diciembre.</p>
-  <p>Cada sección se abre con un clic. Todo lo que aparece aquí es verificable y no contiene datos personales de participantes.</p>
-</div>
-
-<div class="nums">
-  <div class="num"><b>48</b><span>automatizaciones activas en n8n</span></div>
-  <div class="num"><b>390</b><span>scripts de Python</span></div>
-  <div class="num"><b>53</b><span>guías de recuperación</span></div>
-  <div class="num"><b>1.150</b><span>cambios versionados en Git</span></div>
-  <div class="num"><b>225+</b><span>tareas trazables en Linear</span></div>
-  <div class="num"><b>~94.000</b><span>registros en una base central</span></div>
-</div>
-<p class="note">Cifras del repositorio y del servidor n8n con corte al 13 de noviembre de 2026.</p>
-
-<details open>
-  <summary>1. Qué se pidió y dónde vamos <small>plan de onboarding, 10 semanas</small></summary>
-  <div class="in">
-    <table>
-      <tr><th>Fase del plan</th><th>Estado</th><th>Qué hay hoy</th></tr>
-      <tr><td>Semanas 1–2 · Diagnóstico e infraestructura</td><td><span class="tag ok">Hecho</span></td><td>Inventario de plataformas, servidor propio y repositorio documentado. El repositorio de prompts para el equipo se reemplazó por una decisión: la IA se usa de forma centralizada.</td></tr>
-      <tr><td>Semanas 3–5 · Automatización core</td><td><span class="tag ok">Hecho y superado</span></td><td>48 flujos activos: asistencia de clases, registro de Zoom, Q10, oportunidades, avisos y correos.</td></tr>
-      <tr><td>Semanas 6–8 · Integración analítica</td><td><span class="tag alt">Hecho con otra herramienta</span></td><td>En lugar de Power BI: base central en Supabase y un <a href="https://panel-de-datos.vercel.app" target="_blank" rel="noopener">Panel de Datos público</a> que se actualiza solo y no tiene costo de licencia.</td></tr>
-      <tr><td>Semanas 9–10 · Transferencia y cierre</td><td><span class="tag run">En curso, hasta diciembre</span></td><td>53 guías de recuperación y un panel de diagnóstico. Faltan la capacitación del equipo y el ensayo real del servidor de respaldo.</td></tr>
-    </table>
-    <h3>Proyectos clave del plan</h3>
-    <table>
-      <tr><th>Proyecto</th><th>Estado</th><th>Detalle</th></tr>
-      <tr><td>Gestión inteligente de participantes</td><td><span class="tag ok">Hecho</span></td><td>Forms, Sheets, Q10 y Zoom consolidados. Hay un reporte de riesgo de deserción; las alertas automáticas de riesgo están pendientes.</td></tr>
-      <tr><td>Workspace optimizado</td><td><span class="tag ok">Hecho en su mayoría</span></td><td>Consolidación en Sheets, envío de correos masivos con control de bajas y rebotes, y asistencia de Zoom. Las respuestas automáticas de Gmail están pendientes.</td></tr>
-      <tr><td>Atención automatizada (WhatsApp)</td><td><span class="tag wait">Construido, en pausa</span></td><td>El bot quedó listo. Está en pausa porque la plataforma externa (ManyChat) no fue aprobada.</td></tr>
-      <tr><td>Difusión y convocatorias</td><td><span class="tag run">En curso</span></td><td>Oportunidades publicadas automáticamente en la web, campañas NOVA y convocatoria de Uruguay. La lectura automática de hojas de vida está pendiente.</td></tr>
-      <tr><td>Dashboard de control</td><td><span class="tag ok">Hecho</span></td><td>Panel de diagnóstico con el estado de cada flujo y alertas que indican qué hacer.</td></tr>
-      <tr><td>Estructuración de archivos y grabaciones</td><td><span class="tag wait">Bloqueado</span></td><td>Diseñado y documentado. Espera permisos de administrador de la cuenta de soporte.</td></tr>
-    </table>
+<section id="plan" class="reveal">
+  <div class="sec-head"><span class="n">01</span><h2>Qué se pidió y dónde vamos<small>Plan de onboarding · 10 semanas</small></h2></div>
+  <div class="timeline">
+    <div class="phase card"><span class="dot"></span><h3>Sem. 1–2 · Diagnóstico</h3><span class="tag ok">Hecho</span><p>Inventario de plataformas, servidor y repositorio documentado. Los prompts del equipo se reemplazaron por una decisión: la IA se usa de forma centralizada.</p></div>
+    <div class="phase card"><span class="dot"></span><h3>Sem. 3–5 · Automatización</h3><span class="tag ok">Hecho y superado</span><p>48 flujos activos: asistencia, Zoom, Q10, oportunidades, avisos y correos.</p></div>
+    <div class="phase card"><span class="dot"></span><h3>Sem. 6–8 · Analítica</h3><span class="tag alt">Hecho con otra herramienta</span><p>En lugar de Power BI: base central y un <a href="https://panel-de-datos.vercel.app" target="_blank" rel="noopener">Panel de Datos público</a>, sin licencias.</p></div>
+    <div class="phase card now"><span class="dot"></span><h3>Sem. 9–10 · Transferencia</h3><span class="tag run">En curso · diciembre</span><p>53 guías y un panel de diagnóstico. Faltan la capacitación del equipo y el ensayo del servidor de respaldo.</p></div>
   </div>
-</details>
-
-<details>
-  <summary>2. Áreas de trabajo que ejerzo <small>9 roles en un cargo</small></summary>
-  <div class="in">
-    <ul>
-      <li><b>Ingeniería de datos:</b> más de 7 fuentes (Q10, Zoom, Sheets, Forms, Emoflow, MongoDB e históricos 2019–2025) unidas en una sola base.</li>
-      <li><b>Administración de bases de datos:</b> diseño, migraciones, permisos por rol, vistas privadas y respaldos en Supabase/PostgreSQL.</li>
-      <li><b>Análisis de datos:</b> cruces de asistencia, avance, retiros y riesgo por programa.</li>
-      <li><b>Ciencia y calidad de datos:</b> identificación de personas por correo o cédula y pruebas automáticas de integridad.</li>
-      <li><b>Automatización:</b> 48 flujos en n8n que corren solos, a la hora exacta.</li>
-      <li><b>Desarrollo back-end:</b> 390 scripts en Python e integraciones con las API de Zoom, Q10, Google (Gmail, Drive, Sheets) y Telegram.</li>
-      <li><b>Desarrollo front-end:</b> <a href="https://panel-de-datos.vercel.app" target="_blank" rel="noopener">Panel de Datos público</a> y paneles internos (Next.js, Vercel).</li>
-      <li><b>Nube y DevOps:</b> servidor propio en DigitalOcean, seguridad, alertas, respaldos y plan de contingencia.</li>
-      <li><b>Inteligencia artificial aplicada:</b> la IA se usa a diario para construir, revisar y documentar, siempre desde un solo punto de control.</li>
-    </ul>
-    <p class="note">Además: soporte técnico al equipo y administración de los correos masivos.</p>
+  <div class="proj">
+    <div class="card"><h3>Gestión de participantes</h3><span class="tag ok">Hecho</span><p>Forms, Sheets, Q10 y Zoom consolidados y un reporte de riesgo. Las alertas automáticas de deserción están pendientes.</p></div>
+    <div class="card"><h3>Workspace optimizado</h3><span class="tag ok">Hecho en su mayoría</span><p>Consolidación en Sheets, correos masivos con control de bajas y rebotes y asistencia de Zoom. Las respuestas automáticas en Gmail están pendientes.</p></div>
+    <div class="card"><h3>Atención por WhatsApp</h3><span class="tag wait">Construido · en pausa</span><p>El bot quedó listo; está en pausa porque ManyChat no fue aprobado.</p></div>
+    <div class="card"><h3>Difusión y convocatorias</h3><span class="tag run">En curso</span><p>Oportunidades publicadas solas en la web, campañas NOVA y convocatoria de Uruguay. La lectura automática de hojas de vida está pendiente.</p></div>
+    <div class="card"><h3>Dashboard de control</h3><span class="tag ok">Hecho</span><p>Panel de diagnóstico con el estado de cada flujo.</p></div>
+    <div class="card"><h3>Archivos y grabaciones</h3><span class="tag wait">Bloqueado</span><p>Diseñado y documentado; espera permisos de administrador.</p></div>
   </div>
-</details>
+</section>
 
-<details>
-  <summary>3. Certificados <small>abre cada uno</small></summary>
-  <div class="in">
-    <div class="cert"><a href="../docs/jala-university.pdf" target="_blank" rel="noopener">Jala University · Ingeniería de Software Comercial, Diseño y Arquitectura (beca completa)</a><span>2024 – en curso</span></div>
-    <div class="cert"><a href="../docs/devnet-associate.pdf" target="_blank" rel="noopener">Cisco · DevNet Associate</a><span>nov. 2023</span></div>
-    <div class="cert"><a href="../docs/linux-essentials.pdf" target="_blank" rel="noopener">Cisco / NDG · Linux Essentials</a><span>oct. 2023</span></div>
-    <div class="cert"><a href="../docs/linux-unhatched.pdf" target="_blank" rel="noopener">Cisco / NDG · Linux Unhatched</a><span>feb. 2023</span></div>
-    <div class="cert"><a href="../docs/python-pcap.pdf" target="_blank" rel="noopener">Cisco · PCAP – Programming Essentials in Python</a><span>oct. 2022</span></div>
-    <div class="cert"><a href="../docs/iot-fundamentals.pdf" target="_blank" rel="noopener">Cisco · IoT Fundamentals: Connecting Things</a><span>jun. 2022</span></div>
-    <div class="cert"><a href="../docs/cybersecurity.pdf" target="_blank" rel="noopener">Cisco · Introducción a la Ciberseguridad</a><span>—</span></div>
-    <div class="cert"><a href="../docs/data-analytics.png" target="_blank" rel="noopener">Cisco · Data Analytics Essentials (30 h)</a><span>sep. 2024</span></div>
-    <div class="cert"><a href="../docs/jovenes-creativos.pdf" target="_blank" rel="noopener">Jóvenes creaTIvos · JavaScript, CSS y HTML (beca completa)</a><span>dic. 2023</span></div>
-    <div class="cert"><a href="../docs/rosario-gestion.pdf" target="_blank" rel="noopener">Universidad del Rosario · Gestión del Tiempo y Perfil en el Sector TI</a><span>2022</span></div>
-    <div class="cert"><a href="../docs/stem-olimpiadas.png" target="_blank" rel="noopener">Olimpiadas STEM Bogotá · Finalista, top 1 % ICFES</a><span>nov. 2023</span></div>
-    <h3>Habilidades demostradas en el cargo</h3>
-    <ul>
-      <li>Python, SQL (PostgreSQL), JavaScript/TypeScript y Next.js.</li>
-      <li>n8n, Docker, Linux y servidores en la nube.</li>
-      <li>Google Cloud: cuentas de servicio con delegación de dominio para Gmail, Drive y Sheets, con permisos mínimos.</li>
-      <li>Supabase (seguridad por filas, migraciones, respaldos) y MongoDB.</li>
-      <li>Git, Linear y documentación técnica: guías de operación y decisiones de arquitectura.</li>
-    </ul>
+<section id="roles" class="reveal">
+  <div class="sec-head"><span class="n">02</span><h2>Nueve roles en un solo cargo<small>Pasa el mouse (o toca) para ver la captura del salario promedio de cada rol en Colombia</small></h2></div>
+  <div class="roles">
+    <div class="role" tabindex="0"><div class="in">
+      <div class="face front"><span class="ico">🗄️</span><h3>Ingeniería de datos</h3><p>Más de 7 fuentes (Q10, Zoom, Sheets, Forms, Emoflow, MongoDB e históricos) en una sola base.</p><div class="sal">≈ $3,90 M<small>Payscale · 1–4 años</small></div><div class="hint">Ver evidencia ↻</div></div>
+      <div class="face back empty">Payscale, data engineer de 1 a 4 años: COP 46,8 M al año (≈ $3,90 M al mes), julio de 2026. Sin captura guardada.</div>
+    </div></div>
+    <div class="role" tabindex="0"><div class="in">
+      <div class="face front"><span class="ico">🧱</span><h3>Administración de BD</h3><p>Diseño, migraciones, permisos por rol, vistas privadas y respaldos en Supabase.</p><div class="sal">$4,15 M<small>Computrabajo · 94 salarios</small></div><div class="hint">Ver captura ↻</div></div>
+      <div class="face back"><img src="img/roles/dba.jpg" alt="Captura de Computrabajo: administrador de base de datos, $4.153.640 al mes" loading="lazy"><div class="cap">Computrabajo · Administrador de BD · nov-2026</div></div>
+    </div></div>
+    <div class="role" tabindex="0"><div class="in">
+      <div class="face front"><span class="ico">📊</span><h3>Análisis de datos</h3><p>Cruces de asistencia, avance, retiros y riesgo por programa.</p><div class="sal">$2,42 M<small>Computrabajo · 7.172 salarios</small></div><div class="hint">Ver captura ↻</div></div>
+      <div class="face back"><img src="img/roles/analista.jpg" alt="Captura de Computrabajo: analista de datos, $2.418.280 al mes" loading="lazy"><div class="cap">Computrabajo · Analista de datos · nov-2026</div></div>
+    </div></div>
+    <div class="role" tabindex="0"><div class="in">
+      <div class="face front"><span class="ico">🔬</span><h3>Ciencia de datos</h3><p>Identificación de personas por correo o cédula y pruebas automáticas de integridad.</p><div class="sal">$5,89 M<small>Indeed · 17 sueldos</small></div><div class="hint">Ver captura ↻</div></div>
+      <div class="face back"><img src="img/roles/ciencia.jpg" alt="Captura de Indeed: data scientist, $5.885.373 al mes" loading="lazy"><div class="cap">Indeed · Data scientist · sep-2026</div></div>
+    </div></div>
+    <div class="role" tabindex="0"><div class="in">
+      <div class="face front"><span class="ico">⚙️</span><h3>Automatización</h3><p>48 flujos en n8n que corren solos, a la hora exacta.</p><div class="sal">$3,56 M<small>Computrabajo · 610 salarios</small></div><div class="hint">Ver captura ↻</div></div>
+      <div class="face back"><img src="img/roles/automatizacion.jpg" alt="Captura de Computrabajo: ingeniero de automatización, $3.564.635 al mes" loading="lazy"><div class="cap">Computrabajo · Ing. de automatización · oct-2026</div></div>
+    </div></div>
+    <div class="role" tabindex="0"><div class="in">
+      <div class="face front"><span class="ico">🐍</span><h3>Desarrollo back-end</h3><p>390 scripts en Python con las API de Zoom, Q10, Google y Telegram.</p><div class="sal">$3,52 M<small>Computrabajo · 108 salarios</small></div><div class="hint">Ver captura ↻</div></div>
+      <div class="face back"><img src="img/roles/backend.jpg" alt="Captura de Computrabajo: ingeniero de software, $3.523.737 al mes" loading="lazy"><div class="cap">Computrabajo · Ingeniero de software · nov-2026</div></div>
+    </div></div>
+    <div class="role" tabindex="0"><div class="in">
+      <div class="face front"><span class="ico">🖥️</span><h3>Desarrollo front-end</h3><p>Panel de Datos público y paneles internos (Next.js, Vercel).</p><div class="sal">$3,47 M<small>Indeed · 44 sueldos</small></div><div class="hint">Ver captura ↻</div></div>
+      <div class="face back"><img src="img/roles/frontend.jpg" alt="Captura de Indeed: programador front-end, $3.466.552 al mes" loading="lazy"><div class="cap">Indeed · Programador front-end · sep-2026</div></div>
+    </div></div>
+    <div class="role" tabindex="0"><div class="in">
+      <div class="face front"><span class="ico">☁️</span><h3>Nube y DevOps</h3><p>Servidor propio, seguridad, alertas, respaldos y contingencia.</p><div class="sal">$4,10 M<small>Indeed · 7 sueldos</small></div><div class="hint">Ver captura ↻</div></div>
+      <div class="face back"><img src="img/roles/devops.jpg" alt="Captura de Indeed: DevOps, $4.096.066 al mes" loading="lazy"><div class="cap">Indeed · DevOps · sep-2026</div></div>
+    </div></div>
+    <div class="role" tabindex="0"><div class="in">
+      <div class="face front"><span class="ico">🤖</span><h3>Manejo de IA</h3><p>La IA en el trabajo diario de la Fundación: construir, revisar y documentar desde un solo punto de control.</p><div class="sal">$6 – 10 M<small>Datapath · AI Engineer junior, Bogotá</small></div><div class="hint">Ver captura ↻</div></div>
+      <div class="face back"><img src="img/roles/ia.jpg" alt="Captura de Datapath: AI Engineer junior en Bogotá, $6M a $10M" loading="lazy"><div class="cap">Datapath · AI Engineer · 2026 (rango junior; Coderhouse: $4,5–6 M)</div></div>
+    </div></div>
+    <div class="role fde" tabindex="0"><div class="in">
+      <div class="face front"><span class="ico">🚀</span><h3>FDE (opcional)</h3><p>Forward Deployed Engineer: llevar estas soluciones a otras organizaciones. Ver la sección 7.</p><div class="sal">+800 %<small>ofertas en 2025 (Indeed, vía FT)</small></div><div class="hint">Ver artículos ↻</div></div>
+      <div class="face back empty"><div>Uno de los roles de IA de mayor crecimiento.<br><br><a href="https://www.fastcompany.com/91435680/postings-for-this-ai-job-are-up-800" target="_blank" rel="noopener">Fast Company: las ofertas subieron 800 %</a><br><a href="https://www.fortune.com/2026/09/03/forward-deployed-engineers-fast-growing-six-figure-silicon-valley-job-integrate-ai-with-customers-tech-careers-palantir/" target="_blank" rel="noopener">Fortune, sep-2026</a></div></div>
+    </div></div>
   </div>
-</details>
+  <p class="note">Son promedios de todos los niveles en Colombia, excepto Manejo de IA (rango junior) e Ingeniería de datos (1–4 años). El técnico de soporte gana en promedio $1,42 M (Computrabajo): es el único rol que coincide con el cargo contratado.</p>
+</section>
 
-<details>
-  <summary>4. Cómo se organizó el trabajo <small>autoorganización e IA</small></summary>
-  <div class="in">
-    <p>El plan de onboarding fijaba metas y porcentajes esperados (−85 % de horas, 95 % de asertividad, 100 % de adopción de IA), pero no traía línea base, arquitectura, herramientas, accesos ni presupuesto. Era una guía de qué lograr, no de cómo hacerlo.</p>
-    <p>Diseñé esa parte técnica por mi cuenta:</p>
-    <ul>
-      <li><b>Arquitectura propia:</b> elegí y monté la base central, el servidor y el panel sin costo de licencias.</li>
-      <li><b>Trazabilidad:</b> cada tarea en Linear, cada cambio en Git y cada decisión importante escrita, para que cualquiera pueda auditar qué se hizo y por qué.</li>
-      <li><b>Recuperación:</b> cada flujo tiene un camino de error, y su alerta apunta a la guía con el paso exacto a seguir.</li>
-      <li><b>IA como multiplicador:</b> uso asistentes de programación con IA para construir, revisar y documentar más rápido, con revisión humana antes de llevar algo a producción.</li>
-    </ul>
+<section id="alertas" class="reveal">
+  <div class="sec-head"><span class="n">03</span><h2>Cada alerta dice qué hacer<small>Telegram + 53 guías de recuperación</small></h2></div>
+  <div class="tg">
+    <div class="phone" aria-label="Ejemplo de alerta de Telegram">
+      <div class="bar"><div class="av">n8n</div><div><b>Alertas ROFÉ</b><small>bot de monitoreo</small></div></div>
+      <div class="chat" id="chat">
+        <div class="msg">✅ q10-sync-supabase terminó bien a las 12:30.</div>
+        <div class="typing" id="typing"><i></i><i></i><i></i></div>
+        <div class="msg">❌ Error en <code>correo-alias-diario</code> (exit 1).<br>Revisar ejecución en n8n; no compartir salida con datos individuales.<br><span class="rb">📘 runbooks/correo-alias-diario.md</span></div>
+      </div>
+    </div>
+    <div>
+      <p>Ningún flujo falla en silencio. Cuando algo sale mal, llega un mensaje a Telegram, y su <b>última línea es el nombre del archivo de la guía</b> que explica cómo resolverlo.</p>
+      <p>Así, quien se tome el tiempo de leer la documentación entiende cómo funciona todo el entorno, sin depender de una sola persona. Cada guía sigue la misma estructura:</p>
+      <div class="steps">
+        <div><b>Qué significa</b> la alerta, en una línea.</div>
+        <div><b>El comando exacto</b> para ver el detalle.</div>
+        <div><b>Qué hacer</b>, paso a paso.</div>
+        <div><b>Qué NO hacer</b>, para no empeorar el problema.</div>
+      </div>
+    </div>
   </div>
-</details>
+</section>
 
-<details open class="promise">
-  <summary>5. Compromiso: el soporte siempre queda cubierto <small>medio tiempo + automatización</small></summary>
-  <div class="in">
-    <ul>
-      <li>Con el medio tiempo y las automatizaciones de n8n, las labores de soporte se cumplen con <b>más precisión que a mano</b>: los flujos corren a la hora exacta, no olvidan y avisan si algo falla.</li>
-      <li><b>Me comprometo</b> a que las plataformas de la Fundación queden actualizadas y a que ninguna necesidad quede desatendida.</li>
-      <li>Tengo un <b>plan de acción estructurado</b> sobre hacia dónde dirigir el esfuerzo, con prioridades y tareas registradas.</li>
-      <li>No hace falta <b>contratar a alguien que me reemplace</b> en estas labores.</li>
-      <li>Si la Dirección lo prefiere, puedo tomar las clases <b>desde la oficina</b>. Así detecto cualquier necesidad en el momento: si es breve, la resuelvo ahí mismo; si no, la atiendo en mi jornada.</li>
-    </ul>
+<section id="certs" class="reveal">
+  <div class="sec-head"><span class="n">04</span><h2>Certificados<small>Pasa el mouse para verlo completo; haz clic para ampliarlo</small></h2></div>
+  <div class="certs">
+    <a class="cert" href="../docs/jala-university.pdf" data-img="img/cert/jala-university.jpg"><img src="img/cert/jala-university.jpg" alt="Constancia de Jala University" loading="lazy"><div><b>Jala University · Ing. de Software Comercial</b><span>Beca completa · 2024 – en curso</span></div></a>
+    <a class="cert" href="../docs/devnet-associate.pdf" data-img="img/cert/devnet-associate.jpg"><img src="img/cert/devnet-associate.jpg" alt="Certificado Cisco DevNet Associate" loading="lazy"><div><b>Cisco · DevNet Associate</b><span>nov. 2023</span></div></a>
+    <a class="cert" href="../docs/linux-essentials.pdf" data-img="img/cert/linux-essentials.jpg"><img src="img/cert/linux-essentials.jpg" alt="Certificado NDG Linux Essentials" loading="lazy"><div><b>Cisco / NDG · Linux Essentials</b><span>oct. 2023</span></div></a>
+    <a class="cert" href="../docs/linux-unhatched.pdf" data-img="img/cert/linux-unhatched.jpg"><img src="img/cert/linux-unhatched.jpg" alt="Certificado NDG Linux Unhatched" loading="lazy"><div><b>Cisco / NDG · Linux Unhatched</b><span>feb. 2023</span></div></a>
+    <a class="cert" href="../docs/python-pcap.pdf" data-img="img/cert/python-pcap.jpg"><img src="img/cert/python-pcap.jpg" alt="Certificado PCAP Programming Essentials in Python" loading="lazy"><div><b>Cisco · PCAP – Python</b><span>oct. 2022</span></div></a>
+    <a class="cert" href="../docs/iot-fundamentals.pdf" data-img="img/cert/iot-fundamentals.jpg"><img src="img/cert/iot-fundamentals.jpg" alt="Certificado IoT Fundamentals" loading="lazy"><div><b>Cisco · IoT Fundamentals</b><span>jun. 2022</span></div></a>
+    <a class="cert" href="../docs/cybersecurity.pdf" data-img="img/cert/cybersecurity.jpg"><img src="img/cert/cybersecurity.jpg" alt="Certificado Introducción a la Ciberseguridad" loading="lazy"><div><b>Cisco · Introducción a la Ciberseguridad</b><span>Networking Academy</span></div></a>
+    <a class="cert" href="../docs/data-analytics.png" data-img="img/cert/data-analytics.jpg"><img src="img/cert/data-analytics.jpg" alt="Certificado Data Analytics Essentials" loading="lazy"><div><b>Cisco · Data Analytics Essentials</b><span>sep. 2024 · 30 h</span></div></a>
+    <a class="cert" href="../docs/jovenes-creativos.pdf" data-img="img/cert/jovenes-creativos.jpg"><img src="img/cert/jovenes-creativos.jpg" alt="Certificado Jóvenes creaTIvos" loading="lazy"><div><b>Jóvenes creaTIvos · Front-End</b><span>dic. 2023 · beca completa</span></div></a>
+    <a class="cert" href="../docs/rosario-gestion.pdf" data-img="img/cert/rosario-gestion.jpg"><img src="img/cert/rosario-gestion.jpg" alt="Certificado Universidad del Rosario" loading="lazy"><div><b>U. del Rosario · Gestión del Tiempo y Perfil TI</b><span>2022 · 25 h</span></div></a>
+    <a class="cert" href="../docs/stem-olimpiadas.png" data-img="img/cert/stem-olimpiadas.jpg"><img src="img/cert/stem-olimpiadas.jpg" alt="Finalista Olimpiadas STEM" loading="lazy"><div><b>Olimpiadas STEM · Finalista</b><span>nov. 2023 · top 1 % ICFES</span></div></a>
   </div>
-</details>
-
-<details>
-  <summary>6. Rol FDE (opcional) <small>requiere una conversación aparte</small></summary>
-  <div class="in">
-    <p>El <b>Forward Deployed Engineer (FDE)</b> lleva soluciones de automatización e IA a otras organizaciones, adaptadas a cada cliente. Es uno de los roles de mayor crecimiento del mercado tecnológico en los últimos años, y podría ejercerlo dentro de la misma media jornada como una línea de valor adicional para la Fundación.</p>
-    <p><b>No le resta al soporte.</b> Si en algún momento hay trabajo de FDE, lo que se aplaza son las entregas de desarrollo, nunca el soporte. El soporte está cubierto con FDE o sin él; doy mi palabra.</p>
+  <div class="skills" aria-label="Habilidades demostradas">
+    <span>Python</span><span>SQL / PostgreSQL</span><span>JavaScript · TypeScript</span><span>Next.js</span><span class="hot">n8n</span><span>Docker</span><span>Linux</span><span class="hot">Google Cloud · service accounts con delegación de dominio</span><span>Gmail · Drive · Sheets API</span><span>Supabase</span><span>MongoDB</span><span>Zoom API</span><span>Telegram</span><span>Git · Linear</span>
   </div>
-</details>
+</section>
 
-<footer>Página de evidencias preparada para la Dirección Ejecutiva de la Fundación ROFÉ – Toca una Vida. No contiene datos personales de participantes. · <a href="../">Portafolio completo</a></footer>
-</div>
+<section id="org" class="reveal">
+  <div class="sec-head"><span class="n">05</span><h2>Cómo se organizó el trabajo<small>Autoorganización e IA</small></h2></div>
+  <div class="two">
+    <div class="card"><p>El plan de onboarding fijaba metas y porcentajes esperados (−85 % de horas, 95 % de asertividad, 100 % de adopción de IA), pero no traía línea base, arquitectura, herramientas, accesos ni presupuesto. Era una guía de qué lograr, no de cómo hacerlo.</p><p>Diseñé esa parte técnica por mi cuenta.</p></div>
+    <div class="card"><ul class="clean">
+      <li><b>Arquitectura propia</b>, sin costo de licencias.</li>
+      <li><b>Trazabilidad:</b> cada tarea en Linear, cada cambio en Git y cada decisión escrita.</li>
+      <li><b>Recuperación:</b> cada alerta apunta a su guía.</li>
+      <li><b>IA como multiplicador:</b> asistentes de programación con IA para construir, revisar y documentar, con revisión antes de llevar algo a producción.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="compromiso" class="reveal">
+  <div class="sec-head"><span class="n">06</span><h2>Compromiso: el soporte siempre queda cubierto<small>Medio tiempo + automatización</small></h2></div>
+  <div class="card promise"><ul>
+    <li>Con el medio tiempo y las automatizaciones de n8n, las labores de soporte se cumplen con <b>más precisión que a mano</b>: los flujos corren a la hora exacta, no olvidan y avisan si algo falla.</li>
+    <li><b>Me comprometo</b> a que las plataformas de la Fundación queden actualizadas y a que ninguna necesidad quede desatendida.</li>
+    <li>Tengo un <b>plan de acción estructurado</b> sobre hacia dónde dirigir el esfuerzo, con prioridades y tareas registradas.</li>
+    <li>No hace falta <b>contratar a alguien que me reemplace</b> en estas labores.</li>
+    <li>Si la Dirección lo prefiere, puedo tomar las clases <b>desde la oficina</b>. Así detecto cualquier necesidad en el momento: si es breve, la resuelvo ahí mismo; si no, la atiendo en mi jornada.</li>
+  </ul></div>
+</section>
+
+<section id="fde" class="reveal">
+  <div class="sec-head"><span class="n">07</span><h2>Rol FDE (opcional)<small>Requiere una conversación aparte</small></h2></div>
+  <div class="two">
+    <div class="card"><p>El <b>Forward Deployed Engineer</b> lleva soluciones de automatización e IA a otras organizaciones, adaptadas a cada cliente. Es uno de los roles de mayor crecimiento del mercado tecnológico: las ofertas subieron más de 800 % en 2025, según datos de Indeed citados por el Financial Times.</p>
+      <p class="note">Lecturas: <a href="https://www.fastcompany.com/91435680/postings-for-this-ai-job-are-up-800" target="_blank" rel="noopener">Fast Company</a> · <a href="https://www.fortune.com/2026/09/03/forward-deployed-engineers-fast-growing-six-figure-silicon-valley-job-integrate-ai-with-customers-tech-careers-palantir/" target="_blank" rel="noopener">Fortune</a> · <a href="https://www.computerworld.com/article/4171867/heres-one-career-emerging-from-the-ai-shift-forward-deployed-engineers.html" target="_blank" rel="noopener">Computerworld</a></p></div>
+    <div class="card promise"><p><b>No le resta al soporte.</b> Si hay trabajo de FDE, lo que se aplaza son las entregas de desarrollo, nunca el soporte. El soporte está cubierto con FDE o sin él; doy mi palabra.</p></div>
+  </div>
+</section>
+
+<footer>Página de evidencias para la Dirección Ejecutiva de la Fundación ROFÉ – Toca una Vida. Colores del manual de identidad de Jóvenes creaTIvos (naranja #F7972B, azul marino #0C175D, durazno #F6C486). No contiene datos personales de participantes. · <a href="../">Portafolio completo</a></footer>
+</main>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- partículas conectadas --- */
+  var c = document.getElementById('fx'), x = c.getContext('2d'), W, H, P = [];
+  function size(){ W = c.width = innerWidth; H = c.height = innerHeight; }
+  size(); addEventListener('resize', size);
+  var N = Math.min(70, Math.round(innerWidth / 18));
+  for (var i = 0; i < N; i++) P.push({x: Math.random()*W, y: Math.random()*H, vx: (Math.random()-.5)*.35, vy: (Math.random()-.5)*.35, r: Math.random()*1.8+.6});
+  var mouse = {x: -999, y: -999};
+  addEventListener('mousemove', function(e){ mouse.x = e.clientX; mouse.y = e.clientY; });
+  function draw(){
+    x.clearRect(0,0,W,H);
+    for (var i = 0; i < P.length; i++){
+      var p = P[i]; p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1;
+      x.beginPath(); x.arc(p.x, p.y, p.r, 0, 6.3); x.fillStyle = 'rgba(247,151,43,.75)'; x.fill();
+      for (var j = i+1; j < P.length; j++){
+        var q = P[j], d = Math.hypot(p.x-q.x, p.y-q.y);
+        if (d < 130){ x.strokeStyle = 'rgba(246,196,134,' + (0.18*(1-d/130)) + ')'; x.beginPath(); x.moveTo(p.x,p.y); x.lineTo(q.x,q.y); x.stroke(); }
+      }
+      var dm = Math.hypot(p.x-mouse.x, p.y-mouse.y);
+      if (dm < 160){ x.strokeStyle = 'rgba(247,151,43,' + (0.35*(1-dm/160)) + ')'; x.beginPath(); x.moveTo(p.x,p.y); x.lineTo(mouse.x,mouse.y); x.stroke(); }
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  draw();
+
+  /* --- texto que se escribe --- */
+  var lines = ['Automatización · Datos · Nube · IA', 'Contratado para soporte, ejerciendo nueve roles', 'Soporte cubierto con o sin FDE'];
+  var t = document.getElementById('type'), li = 0, ch = 0, del = false;
+  function tick(){
+    var s = lines[li];
+    t.textContent = s.slice(0, ch);
+    if (!del && ch < s.length) ch++; else if (!del) { del = true; return setTimeout(tick, 1800); }
+    else if (ch > 0) ch--; else { del = false; li = (li+1) % lines.length; }
+    setTimeout(tick, del ? 28 : 55);
+  }
+  if (reduce) t.textContent = lines[0]; else tick();
+
+  /* --- contadores y aparición al hacer scroll --- */
+  function count(el){
+    var to = +el.dataset.to, pre = el.dataset.pre || '', suf = el.dataset.suf || '', t0 = performance.now(), dur = reduce ? 0 : 1600;
+    (function step(now){
+      var k = dur ? Math.min(1, (now - t0) / dur) : 1, v = Math.round(to * (1 - Math.pow(1-k, 3)));
+      el.textContent = pre + v.toLocaleString('es-CO') + suf;
+      if (k < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (!e.isIntersecting) return;
+      e.target.classList.add('on');
+      if (e.target.dataset.to) count(e.target);
+      if (e.target.id === 'alertas') playChat();
+      io.unobserve(e.target);
+    });
+  }, {threshold: .18});
+  document.querySelectorAll('.reveal,[data-to]').forEach(function(el){ io.observe(el); });
+
+  /* --- chat de Telegram --- */
+  var played = false;
+  function playChat(){
+    if (played) return; played = true;
+    var m = document.querySelectorAll('#chat .msg'), ty = document.getElementById('typing');
+    m[0].classList.add('on');
+    setTimeout(function(){ ty.style.display = 'none'; m[1].classList.add('on'); }, reduce ? 0 : 1700);
+  }
+
+  /* --- roles: tocar en móvil --- */
+  document.querySelectorAll('.role').forEach(function(r){
+    r.addEventListener('click', function(e){ if (e.target.tagName !== 'A') r.classList.toggle('flip'); });
+    r.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); r.classList.toggle('flip'); } });
+  });
+
+  /* --- certificados: vista al pasar el mouse y ampliación al hacer clic --- */
+  var peek = document.getElementById('peek'), pimg = peek.querySelector('img');
+  var lb = document.getElementById('lb'), limg = lb.querySelector('img'), la = lb.querySelector('a');
+  document.querySelectorAll('.cert').forEach(function(a){
+    a.addEventListener('mouseenter', function(){ pimg.src = a.dataset.img; peek.classList.add('on'); });
+    a.addEventListener('mouseleave', function(){ peek.classList.remove('on'); });
+    a.addEventListener('mousemove', function(e){
+      var w = peek.offsetWidth, h = peek.offsetHeight || 340;
+      var px = e.clientX + 24; if (px + w > innerWidth - 10) px = e.clientX - w - 24;
+      var py = Math.max(10, Math.min(e.clientY - h/2, innerHeight - h - 10));
+      peek.style.left = px + 'px'; peek.style.top = py + 'px';
+    });
+    a.addEventListener('click', function(e){
+      e.preventDefault(); peek.classList.remove('on');
+      limg.src = a.dataset.img; limg.alt = a.querySelector('img').alt; la.href = a.href; lb.classList.add('on');
+    });
+  });
+  lb.addEventListener('click', function(e){ if (e.target.tagName !== 'A') lb.classList.remove('on'); });
+  addEventListener('keydown', function(e){ if (e.key === 'Escape') lb.classList.remove('on'); });
+})();
+</script>
 </body>
 </html>
