@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Evidencias · Samuel Rojas</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --ink:#1b2430; --muted:#5b6675; --line:#e2e6ec;
+  --brand:#406C9E; --brand-soft:#e8eff7;
+  --ok:#1f7a4d; --ok-bg:#e3f4ea; --alt:#2f5f93; --alt-bg:#e5eef8;
+  --run:#8a5a00; --run-bg:#fbf0d6; --wait:#6b4d9a; --wait-bg:#efe8f8;
+  --todo:#7a7f87; --todo-bg:#eef0f3;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#11161d; --card:#18202a; --ink:#e7ecf2; --muted:#a3adba; --line:#2a3542;
+    --brand:#8db4e0; --brand-soft:#1d2b3b;
+    --ok:#7fd3a5; --ok-bg:#163126; --alt:#9cc2ee; --alt-bg:#18293d;
+    --run:#f0c46a; --run-bg:#352a12; --wait:#c4a8ee; --wait-bg:#2a2238;
+    --todo:#b3b9c2; --todo-bg:#232b35;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Century Gothic","Segoe UI",system-ui,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:32px 16px 64px}
+header h1{font-size:1.6rem;margin:0 0 4px}
+header p{margin:0;color:var(--muted)}
+.lead{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:16px 18px;margin:22px 0}
+.lead p{margin:.3em 0}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:18px 0 6px}
+.num{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+.num b{display:block;font-size:1.5rem;color:var(--brand)}
+.num span{font-size:.85rem;color:var(--muted)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:12px 0;overflow:hidden}
+summary{cursor:pointer;padding:14px 18px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--brand);font-size:1.2rem;line-height:1}
+details[open] summary::after{content:"–"}
+summary small{font-weight:400;color:var(--muted)}
+.in{padding:0 18px 16px;border-top:1px solid var(--line)}
+.in h3{font-size:1rem;margin:16px 0 6px}
+ul{padding-left:20px;margin:6px 0}
+li{margin:4px 0}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:10px 0}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.tag{display:inline-block;font-size:.78rem;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)} .alt{color:var(--alt);background:var(--alt-bg)}
+.run{color:var(--run);background:var(--run-bg)} .wait{color:var(--wait);background:var(--wait-bg)}
+.todo{color:var(--todo);background:var(--todo-bg)}
+a{color:var(--brand)}
+.cert{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.cert:last-child{border-bottom:0}
+.cert span{color:var(--muted);font-size:.9rem;white-space:nowrap}
+.note{font-size:.88rem;color:var(--muted)}
+.promise{border-left:4px solid var(--ok)}
+footer{margin-top:28px;font-size:.85rem;color:var(--muted)}
+@media (max-width:560px){ .cert{flex-direction:column;gap:2px} th:nth-child(3),td:nth-child(3){display:none} }
+@media print{ details{break-inside:avoid} details:not([open]) .in{display:block} summary::after{content:""} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Samuel David Rojas Monroy</h1>
+  <p>Evidencias de trabajo y formación · Asistente de Soporte Técnico, Fundación ROFÉ – Toca una Vida · Corte: 24 de noviembre de 2026</p>
+</header>
+
+<div class="lead">
+  <p><b>En breve.</b> En junio de 2026 recibí un plan de 10 semanas para convertir el soporte en un «catalizador digital». A noviembre, las fases de automatización e integración de datos están hechas y superadas. La transferencia al equipo está en curso y termina en diciembre.</p>
+  <p>Cada sección se abre con un clic. Todo lo que aparece aquí es verificable y no contiene datos personales de participantes.</p>
+</div>
+
+<div class="nums">
+  <div class="num"><b>48</b><span>automatizaciones activas en n8n</span></div>
+  <div class="num"><b>390</b><span>scripts de Python</span></div>
+  <div class="num"><b>53</b><span>guías de recuperación</span></div>
+  <div class="num"><b>1.150</b><span>cambios versionados en Git</span></div>
+  <div class="num"><b>225+</b><span>tareas trazables en Linear</span></div>
+  <div class="num"><b>~94.000</b><span>registros en una base central</span></div>
+</div>
+<p class="note">Cifras del repositorio y del servidor n8n con corte al 13 de noviembre de 2026.</p>
+
+<details open>
+  <summary>1. Qué se pidió y dónde vamos <small>plan de onboarding, 10 semanas</small></summary>
+  <div class="in">
+    <table>
+      <tr><th>Fase del plan</th><th>Estado</th><th>Qué hay hoy</th></tr>
+      <tr><td>Semanas 1–2 · Diagnóstico e infraestructura</td><td><span class="tag ok">Hecho</span></td><td>Inventario de plataformas, servidor propio y repositorio documentado. El repositorio de prompts para el equipo se reemplazó por una decisión: la IA se usa de forma centralizada.</td></tr>
+      <tr><td>Semanas 3–5 · Automatización core</td><td><span class="tag ok">Hecho y superado</span></td><td>48 flujos activos: asistencia de clases, registro de Zoom, Q10, oportunidades, avisos y correos.</td></tr>
+      <tr><td>Semanas 6–8 · Integración analítica</td><td><span class="tag alt">Hecho con otra herramienta</span></td><td>En lugar de Power BI: base central en Supabase y un <a href="https://panel-de-datos.vercel.app" target="_blank" rel="noopener">Panel de Datos público</a> que se actualiza solo y no tiene costo de licencia.</td></tr>
+      <tr><td>Semanas 9–10 · Transferencia y cierre</td><td><span class="tag run">En curso, hasta diciembre</span></td><td>53 guías de recuperación y un panel de diagnóstico. Faltan la capacitación del equipo y el ensayo real del servidor de respaldo.</td></tr>
+    </table>
+    <h3>Proyectos clave del plan</h3>
+    <table>
+      <tr><th>Proyecto</th><th>Estado</th><th>Detalle</th></tr>
+      <tr><td>Gestión inteligente de participantes</td><td><span class="tag ok">Hecho</span></td><td>Forms, Sheets, Q10 y Zoom consolidados. Hay un reporte de riesgo de deserción; las alertas automáticas de riesgo están pendientes.</td></tr>
+      <tr><td>Workspace optimizado</td><td><span class="tag ok">Hecho en su mayoría</span></td><td>Consolidación en Sheets, envío de correos masivos con control de bajas y rebotes, y asistencia de Zoom. Las respuestas automáticas de Gmail están pendientes.</td></tr>
+      <tr><td>Atención automatizada (WhatsApp)</td><td><span class="tag wait">Construido, en pausa</span></td><td>El bot quedó listo. Está en pausa porque la plataforma externa (ManyChat) no fue aprobada.</td></tr>
+      <tr><td>Difusión y convocatorias</td><td><span class="tag run">En curso</span></td><td>Oportunidades publicadas automáticamente en la web, campañas NOVA y convocatoria de Uruguay. La lectura automática de hojas de vida está pendiente.</td></tr>
+      <tr><td>Dashboard de control</td><td><span class="tag ok">Hecho</span></td><td>Panel de diagnóstico con el estado de cada flujo y alertas que indican qué hacer.</td></tr>
+      <tr><td>Estructuración de archivos y grabaciones</td><td><span class="tag wait">Bloqueado</span></td><td>Diseñado y documentado. Espera permisos de administrador de la cuenta de soporte.</td></tr>
+    </table>
+  </div>
+</details>
+
+<details>
+  <summary>2. Áreas de trabajo que ejerzo <small>9 roles en un cargo</small></summary>
+  <div class="in">
+    <ul>
+      <li><b>Ingeniería de datos:</b> más de 7 fuentes (Q10, Zoom, Sheets, Forms, Emoflow, MongoDB e históricos 2019–2025) unidas en una sola base.</li>
+      <li><b>Administración de bases de datos:</b> diseño, migraciones, permisos por rol, vistas privadas y respaldos en Supabase/PostgreSQL.</li>
+      <li><b>Análisis de datos:</b> cruces de asistencia, avance, retiros y riesgo por programa.</li>
+      <li><b>Ciencia y calidad de datos:</b> identificación de personas por correo o cédula y pruebas automáticas de integridad.</li>
+      <li><b>Automatización:</b> 48 flujos en n8n que corren solos, a la hora exacta.</li>
+      <li><b>Desarrollo back-end:</b> 390 scripts en Python e integraciones con las API de Zoom, Q10, Google (Gmail, Drive, Sheets) y Telegram.</li>
+      <li><b>Desarrollo front-end:</b> <a href="https://panel-de-datos.vercel.app" target="_blank" rel="noopener">Panel de Datos público</a> y paneles internos (Next.js, Vercel).</li>
+      <li><b>Nube y DevOps:</b> servidor propio en DigitalOcean, seguridad, alertas, respaldos y plan de contingencia.</li>
+      <li><b>Inteligencia artificial aplicada:</b> la IA se usa a diario para construir, revisar y documentar, siempre desde un solo punto de control.</li>
+    </ul>
+    <p class="note">Además: soporte técnico al equipo y administración de los correos masivos.</p>
+  </div>
+</details>
+
+<details>
+  <summary>3. Certificados <small>abre cada uno</small></summary>
+  <div class="in">
+    <div class="cert"><a href="../docs/jala-university.pdf" target="_blank" rel="noopener">Jala University · Ingeniería de Software Comercial, Diseño y Arquitectura (beca completa)</a><span>2024 – en curso</span></div>
+    <div class="cert"><a href="../docs/devnet-associate.pdf" target="_blank" rel="noopener">Cisco · DevNet Associate</a><span>nov. 2023</span></div>
+    <div class="cert"><a href="../docs/linux-essentials.pdf" target="_blank" rel="noopener">Cisco / NDG · Linux Essentials</a><span>oct. 2023</span></div>
+    <div class="cert"><a href="../docs/linux-unhatched.pdf" target="_blank" rel="noopener">Cisco / NDG · Linux Unhatched</a><span>feb. 2023</span></div>
+    <div class="cert"><a href="../docs/python-pcap.pdf" target="_blank" rel="noopener">Cisco · PCAP – Programming Essentials in Python</a><span>oct. 2022</span></div>
+    <div class="cert"><a href="../docs/iot-fundamentals.pdf" target="_blank" rel="noopener">Cisco · IoT Fundamentals: Connecting Things</a><span>jun. 2022</span></div>
+    <div class="cert"><a href="../docs/cybersecurity.pdf" target="_blank" rel="noopener">Cisco · Introducción a la Ciberseguridad</a><span>—</span></div>
+    <div class="cert"><a href="../docs/data-analytics.png" target="_blank" rel="noopener">Cisco · Data Analytics Essentials (30 h)</a><span>sep. 2024</span></div>
+    <div class="cert"><a href="../docs/jovenes-creativos.pdf" target="_blank" rel="noopener">Jóvenes creaTIvos · JavaScript, CSS y HTML (beca completa)</a><span>dic. 2023</span></div>
+    <div class="cert"><a href="../docs/rosario-gestion.pdf" target="_blank" rel="noopener">Universidad del Rosario · Gestión del Tiempo y Perfil en el Sector TI</a><span>2022</span></div>
+    <div class="cert"><a href="../docs/stem-olimpiadas.png" target="_blank" rel="noopener">Olimpiadas STEM Bogotá · Finalista, top 1 % ICFES</a><span>nov. 2023</span></div>
+    <h3>Habilidades demostradas en el cargo</h3>
+    <ul>
+      <li>Python, SQL (PostgreSQL), JavaScript/TypeScript y Next.js.</li>
+      <li>n8n, Docker, Linux y servidores en la nube.</li>
+      <li>Google Cloud: cuentas de servicio con delegación de dominio para Gmail, Drive y Sheets, con permisos mínimos.</li>
+      <li>Supabase (seguridad por filas, migraciones, respaldos) y MongoDB.</li>
+      <li>Git, Linear y documentación técnica: guías de operación y decisiones de arquitectura.</li>
+    </ul>
+  </div>
+</details>
+
+<details>
+  <summary>4. Cómo se organizó el trabajo <small>autoorganización e IA</small></summary>
+  <div class="in">
+    <p>El plan de onboarding fijaba metas y porcentajes esperados (−85 % de horas, 95 % de asertividad, 100 % de adopción de IA), pero no traía línea base, arquitectura, herramientas, accesos ni presupuesto. Era una guía de qué lograr, no de cómo hacerlo.</p>
+    <p>Diseñé esa parte técnica por mi cuenta:</p>
+    <ul>
+      <li><b>Arquitectura propia:</b> elegí y monté la base central, el servidor y el panel sin costo de licencias.</li>
+      <li><b>Trazabilidad:</b> cada tarea en Linear, cada cambio en Git y cada decisión importante escrita, para que cualquiera pueda auditar qué se hizo y por qué.</li>
+      <li><b>Recuperación:</b> cada flujo tiene un camino de error, y su alerta apunta a la guía con el paso exacto a seguir.</li>
+      <li><b>IA como multiplicador:</b> uso asistentes de programación con IA para construir, revisar y documentar más rápido, con revisión humana antes de llevar algo a producción.</li>
+    </ul>
+  </div>
+</details>
+
+<details open class="promise">
+  <summary>5. Compromiso: el soporte siempre queda cubierto <small>medio tiempo + automatización</small></summary>
+  <div class="in">
+    <ul>
+      <li>Con el medio tiempo y las automatizaciones de n8n, las labores de soporte se cumplen con <b>más precisión que a mano</b>: los flujos corren a la hora exacta, no olvidan y avisan si algo falla.</li>
+      <li><b>Me comprometo</b> a que las plataformas de la Fundación queden actualizadas y a que ninguna necesidad quede desatendida.</li>
+      <li>Tengo un <b>plan de acción estructurado</b> sobre hacia dónde dirigir el esfuerzo, con prioridades y tareas registradas.</li>
+      <li>No hace falta <b>contratar a alguien que me reemplace</b> en estas labores.</li>
+      <li>Si la Dirección lo prefiere, puedo tomar las clases <b>desde la oficina</b>. Así detecto cualquier necesidad en el momento: si es breve, la resuelvo ahí mismo; si no, la atiendo en mi jornada.</li>
+    </ul>
+  </div>
+</details>
+
+<details>
+  <summary>6. Rol FDE (opcional) <small>requiere una conversación aparte</small></summary>
+  <div class="in">
+    <p>El <b>Forward Deployed Engineer (FDE)</b> lleva soluciones de automatización e IA a otras organizaciones, adaptadas a cada cliente. Es uno de los roles de mayor crecimiento del mercado tecnológico en los últimos años, y podría ejercerlo dentro de la misma media jornada como una línea de valor adicional para la Fundación.</p>
+    <p><b>No le resta al soporte.</b> Si en algún momento hay trabajo de FDE, lo que se aplaza son las entregas de desarrollo, nunca el soporte. El soporte está cubierto con FDE o sin él; doy mi palabra.</p>
+  </div>
+</details>
+
+<footer>Página de evidencias preparada para la Dirección Ejecutiva de la Fundación ROFÉ – Toca una Vida. No contiene datos personales de participantes. · <a href="../">Portafolio completo</a></footer>
+</div>
+</body>
+</html>
