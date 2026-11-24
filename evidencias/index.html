@@ -160,6 +160,19 @@ ul.clean{padding-left:20px;margin:8px 0}
 .safe{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:6px}
 .safe li{font-size:.86rem;padding:8px 10px 8px 34px;position:relative;border:1px solid var(--line);border-radius:10px;background:rgba(95,211,154,.06)}
 .safe li::before{content:"🛡";position:absolute;left:10px;top:8px}
+.lead2{border-left:3px solid var(--naranja);margin-bottom:16px}.lead2 p{margin:0}
+.signals{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:center}
+.sig{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center}
+.sig span{font-size:1.5rem;display:block}.sig b{display:block;font-size:.92rem}.sig small{color:var(--muted);font-size:.75rem}
+.sig.new{border-color:var(--naranja);box-shadow:0 0 22px rgba(247,151,43,.3)}
+.pipe{grid-column:1/-1;height:26px;position:relative;overflow:hidden}
+.pipe::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(var(--naranja),transparent)}
+.pipe i{position:absolute;left:calc(50% - 4px);width:10px;height:10px;border-radius:50%;background:var(--naranja);box-shadow:0 0 12px var(--naranja);animation:drop 1.5s linear infinite}
+.pipe i:nth-child(2){animation-delay:.5s}.pipe i:nth-child(3){animation-delay:1s}
+@keyframes drop{from{top:-10px;opacity:1}to{top:26px;opacity:0}}
+.hub{grid-column:1/-1;justify-self:center;background:var(--marino);border:1px solid var(--naranja);border-radius:999px;padding:10px 26px;font-weight:800;box-shadow:0 0 30px rgba(247,151,43,.35)}
+.hub.out{background:var(--naranja);color:var(--marino);text-align:center}.hub small{display:block;font-weight:600;font-size:.75rem}
+@media (max-width:760px){.signals{grid-template-columns:1fr 1fr}}
 footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
 @media (max-width:760px){
   #lb{padding:60px 8px}#lb .prev,#lb .next{top:auto;bottom:16px;transform:none}
@@ -193,7 +206,7 @@ footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid 
     <p>Pasa el mouse sobre cada rol para ver el salario de mercado y sobre cada certificado para verlo completo, sin descargar nada.</p>
   </div>
   <nav class="chips" aria-label="Secciones">
-    <a href="#plan">1 · Plan y avance</a><a href="#roles">2 · Roles y salarios</a><a href="#alertas">3 · Alertas y guías</a><a href="#certs">4 · Certificados</a><a href="#org">5 · Cómo se organizó</a><a href="#compromiso">6 · Compromiso</a><a href="#fde">7 · FDE</a>
+    <a href="#plan">1 · Plan y avance</a><a href="#roles">2 · Roles y salarios</a><a href="#alertas">3 · Alertas y guías</a><a href="#certs">4 · Certificados</a><a href="#org">5 · Cómo se organizó</a><a href="#compromiso">6 · Compromiso</a><a href="#futuro">7 · Lo que viene</a><a href="#fde">8 · FDE</a>
   </nav>
   <div class="nums">
     <div class="num"><b data-to="48">0</b><span>automatizaciones activas</span></div>
@@ -368,8 +381,30 @@ footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid 
   </ul></div>
 </section>
 
+<section id="futuro" class="reveal">
+  <div class="sec-head"><span class="n">07</span><h2>Lo que viene en desarrollo<small>De reaccionar a anticipar</small></h2></div>
+  <div class="card lead2"><p>Hoy, muchas veces nos enteramos de un retiro o de un disgusto cuando el monitor lo recuerda y lo reporta. La meta es saberlo <b>en el momento</b>, con fecha y contexto, y <b>avisar antes</b> de que un caso se vuelva crítico.</p></div>
+  <div class="signals" aria-label="Señales que alimentarán la alerta temprana">
+    <div class="sig"><span>🎓</span><b>Avance en Q10</b><small>ya en la base</small></div>
+    <div class="sig"><span>🗓️</span><b>Asistencia</b><small>ya en la base, cada 5 min</small></div>
+    <div class="sig"><span>📷</span><b>Cámara en clase</b><small>en prueba con JC-ON</small></div>
+    <div class="sig new"><span>💬</span><b>Respuestas a los canales</b><small>siguiente paso</small></div>
+    <div class="pipe"><i></i><i></i><i></i></div>
+    <div class="hub">Base central</div>
+    <div class="pipe"><i></i><i></i><i></i></div>
+    <div class="hub out">Alerta temprana<small>el monitor actúa a tiempo</small></div>
+  </div>
+  <div class="proj">
+    <div class="card"><span class="tag ok">Ya existe</span><h3>Primeras alertas</h3><p>Reporte diario para la líder de monitorías (avance, asistencia y días en riesgo de cada estudiante) y alerta semanal de deserción con el avance en Q10.</p></div>
+    <div class="card"><span class="tag run">Siguiente · plan aprobado</span><h3>Mejores canales de comunicación</h3><p>Enlace de baja en todos los correos masivos y registro de cada envío por canal: qué se mandó, a quién, cuándo y con qué resultado. Rebotes y bajas ya se guardan.</p></div>
+    <div class="card"><span class="tag run">Siguiente</span><h3>Las respuestas de los estudiantes, en un solo lugar</h3><p>Correos, encuestas y formularios (y WhatsApp, cuando se apruebe la plataforma) guardados en la base, junto al resto de su historia.</p></div>
+    <div class="card"><span class="tag alt">Meta</span><h3>Alerta temprana integrada</h3><p>Asistencia, cámara, avance en Q10 y respuesta a los canales, juntos, para avisar a tiempo de los posibles casos críticos. Con suficiente historia, el siguiente paso es predecirlos.</p></div>
+  </div>
+  <p class="note">Base que ya tenemos: la primera ola de la encuesta de satisfacción de JC la respondió el 78 % (647 de 832).</p>
+</section>
+
 <section id="fde" class="reveal">
-  <div class="sec-head"><span class="n">07</span><h2>Rol FDE (opcional)<small>Una idea para conversar más adelante, sin ninguna prisa</small></h2></div>
+  <div class="sec-head"><span class="n">08</span><h2>Rol FDE (opcional)<small>Una idea para conversar más adelante, sin ninguna prisa</small></h2></div>
   <div class="two">
     <div class="card"><p>Solo como idea para más adelante, cuando sea un buen momento. El <b>Forward Deployed Engineer</b> lleva soluciones de automatización e IA a otras organizaciones, adaptadas a cada cliente. Es uno de los roles de mayor crecimiento del mercado tecnológico: las ofertas subieron más de 800 % en 2025, según datos de Indeed citados por el Financial Times.</p>
       <p class="note">Lecturas: <a href="https://www.fastcompany.com/91435680/postings-for-this-ai-job-are-up-800" target="_blank" rel="noopener">Fast Company</a> · <a href="https://www.fortune.com/2026/09/03/forward-deployed-engineers-fast-growing-six-figure-silicon-valley-job-integrate-ai-with-customers-tech-careers-palantir/" target="_blank" rel="noopener">Fortune</a> · <a href="https://www.computerworld.com/article/4171867/heres-one-career-emerging-from-the-ai-shift-forward-deployed-engineers.html" target="_blank" rel="noopener">Computerworld</a></p></div>
