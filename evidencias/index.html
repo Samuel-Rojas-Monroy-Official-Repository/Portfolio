@@ -157,6 +157,9 @@ ul.clean{padding-left:20px;margin:8px 0}
 .path.bad .flow i{color:var(--todo)}
 @keyframes nudge{50%{transform:translateX(4px)}}
 @media (max-width:760px){.vs{grid-template-columns:1fr}}
+.safe{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:6px}
+.safe li{font-size:.86rem;padding:8px 10px 8px 34px;position:relative;border:1px solid var(--line);border-radius:10px;background:rgba(95,211,154,.06)}
+.safe li::before{content:"🛡";position:absolute;left:10px;top:8px}
 footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
 @media (max-width:760px){
   #lb{padding:60px 8px}#lb .prev,#lb .next{top:auto;bottom:16px;transform:none}
@@ -332,7 +335,13 @@ footer{margin-top:80px;font-size:.82rem;color:var(--muted);border-top:1px solid 
       <p>Posible desde el primer día, pero con una relación costo-beneficio muy baja: la IA gasta tokens (dinero) en ordenar información ejecución por ejecución, algo que no le corresponde.</p></div>
     <div class="card path good"><span class="tag ok">Lo que se construyó</span><h3>Primero la estructura, después la IA</h3>
       <div class="flow"><span>Fuentes</span><i>→</i><span>n8n + base central (Supabase)</span><i>→</i><span>IA lee datos ordenados</span></div>
-      <p>Así entendimos las verdaderas necesidades de la Fundación y el plan se volvió viable: cada consulta a la IA cuesta menos y es más eficiente y trazable, igual que toda la información que va llegando.</p></div>
+      <p>Así entendimos las verdaderas necesidades de la Fundación y el plan se volvió viable: cada consulta a la IA cuesta menos y es más eficiente y trazable, igual que toda la información que va llegando.</p>
+      <ul class="safe">
+        <li><b>Un solo lugar:</b> la información ya no está repartida en hojas sueltas, y está más segura.</li>
+        <li><b>Copias de seguridad</b> automáticas todos los días.</li>
+        <li><b>Permisos por rol y accesos de solo lectura:</b> una persona que todavía no domina la IA puede consultar, pero no ejecutar algo que dañe la base de datos.</li>
+        <li><b>Menos errores manuales:</b> lo que antes se copiaba a mano ahora lo hacen los flujos.</li>
+      </ul></div>
   </div>
   <h3 class="mini">El plan de onboarding · pasa el mouse para verlo; haz clic y usa las flechas ‹ › para recorrerlo</h3>
   <div class="slides"><a class="cert slide" href="img/plan/onboarding-01.jpg" data-img="img/plan/onboarding-01.jpg"><img src="img/plan/onboarding-01.jpg" alt="Diapositiva 1 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-02.jpg" data-img="img/plan/onboarding-02.jpg"><img src="img/plan/onboarding-02.jpg" alt="Diapositiva 2 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-03.jpg" data-img="img/plan/onboarding-03.jpg"><img src="img/plan/onboarding-03.jpg" alt="Diapositiva 3 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-04.jpg" data-img="img/plan/onboarding-04.jpg"><img src="img/plan/onboarding-04.jpg" alt="Diapositiva 4 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-05.jpg" data-img="img/plan/onboarding-05.jpg"><img src="img/plan/onboarding-05.jpg" alt="Diapositiva 5 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-06.jpg" data-img="img/plan/onboarding-06.jpg"><img src="img/plan/onboarding-06.jpg" alt="Diapositiva 6 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-07.jpg" data-img="img/plan/onboarding-07.jpg"><img src="img/plan/onboarding-07.jpg" alt="Diapositiva 7 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-08.jpg" data-img="img/plan/onboarding-08.jpg"><img src="img/plan/onboarding-08.jpg" alt="Diapositiva 8 del plan de onboarding" loading="lazy"></a><a class="cert slide" href="img/plan/onboarding-09.jpg" data-img="img/plan/onboarding-09.jpg"><img src="img/plan/onboarding-09.jpg" alt="Diapositiva 9 del plan de onboarding" loading="lazy"></a></div>
